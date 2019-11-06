@@ -1,0 +1,2 @@
+class KyThi < ApplicationRecord
+end

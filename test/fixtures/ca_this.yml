@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ten: 1
+  bat_dau: 2019-11-05 18:39:23
+  ket_thuc: 2019-11-05 18:39:23
+
+two:
+  ten: 1
+  bat_dau: 2019-11-05 18:39:23
+  ket_thuc: 2019-11-05 18:39:23

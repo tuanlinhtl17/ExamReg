@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Examreg</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= value %></strong>
+      </div>
+    <% end %>
+    <div class="wrapper">
+      <%= render "layouts/header" %>
+      <div class="main">
+        <%= render "layouts/sidebar" %>
+        <main><%= yield %></main>
+      </div>
+      <%= render "layouts/footer" %>    
+    </div>
+
+  </body>
+</html>

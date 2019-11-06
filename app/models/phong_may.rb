@@ -1,0 +1,2 @@
+class PhongMay < ApplicationRecord
+end

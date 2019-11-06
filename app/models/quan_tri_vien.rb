@@ -1,0 +1,2 @@
+class QuanTriVien < ApplicationRecord
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ca_thi: one
+  phong_may: one
+  mon_thi: one
+
+two:
+  ca_thi: two
+  phong_may: two
+  mon_thi: two

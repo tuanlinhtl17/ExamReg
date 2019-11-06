@@ -1,0 +1,2 @@
+class CaThi < ApplicationRecord
+end

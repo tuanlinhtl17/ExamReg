@@ -1,0 +1,5 @@
+if ($("#suaHocPhan").length) {
+  $("#suaHocPhan").remove() 
+}
+$('main').append('<%= escape_javascript(render(partial: "admin/hoc_phans/edit", locals: { hoc_phan: @hoc_phan })) %>')
+$("#suaHocPhan").modal("show");

@@ -1,0 +1,23 @@
+<!-- Them ban ghi moi -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themHocPhan">
+  Thêm học phần mới
+</button>
+<br>
+<br>
+
+<!-- Bang du lieu -->
+<table id="hocPhan" class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+        <th>Tên học phần</th>
+        <th>Số tín chỉ</th>
+        <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "hoc_phan", collection: @hoc_phans %>
+  </tbody>
+</table>
+
+<!-- Modal them moi -->
+<%= render partial: "admin/hoc_phans/new" %>

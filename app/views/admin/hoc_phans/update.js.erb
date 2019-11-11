@@ -1,0 +1,7 @@
+$("#suaHocPhan").modal("hide");
+<% if !@hoc_phan.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @hoc_phan })) %>')
+<% else %>
+  toastr.success("Sửa học phần thành công")
+  $('#hoc_phan_<%= @hoc_phan.id %>').replaceWith('<%= escape_javascript(render(partial: "admin/hoc_phans/hoc_phan", locals: { hoc_phan: @hoc_phan })) %>')
+<% end %>

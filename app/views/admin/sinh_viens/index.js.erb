@@ -1,0 +1,4 @@
+$('main').html('<%= escape_javascript(render(partial: "admin/sinh_viens/index", locals: { sinh_viens: @sinh_viens })) %>');
+$(document).ready(function () {
+  initSinhVienTable()
+});

@@ -1,0 +1,16 @@
+<table id="kyThi" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+        <th>Tên</th>
+        <th>Năm học</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% ky_this.each do |ky_thi| %>
+      <tr>
+        <td><%= ky_thi.ten %></td>
+        <td><%= ky_thi.nam_hoc %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

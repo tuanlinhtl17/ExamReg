@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Form chứa <%= object.errors.count %> lỗi 
+      <ul>
+        <% object.errors.messages.values.each do |msg|%>
+          <li><%= msg[0] %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

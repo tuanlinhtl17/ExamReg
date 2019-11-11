@@ -1,0 +1,4 @@
+$('main').html('<%= escape_javascript(render(partial: "admin/ky_this/index", locals: { ky_this: @ky_this })) %>');
+$(document).ready(function () {
+  initKyThiTable()
+});

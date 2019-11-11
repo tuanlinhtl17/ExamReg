@@ -1,0 +1,4 @@
+$('main').html('<%= escape_javascript(render(partial: "admin/hoc_phans/index", locals: { hoc_phans: @hoc_phans })) %>');
+$(document).ready(function () {
+  initHocPhanTable()
+});

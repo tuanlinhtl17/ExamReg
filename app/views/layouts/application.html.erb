@@ -5,22 +5,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><%= value %></strong>
-      </div>
+    <% unless flash.empty? %>
+      <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s %>
+          toastr["<%= type %>"]("<%= f[1] %>");
+        <% end %>
+      </script>
     <% end %>
     <div class="wrapper">
       <%= render "layouts/header" %>
       <div class="main">
         <%= render "layouts/sidebar" %>
-        <main><%= yield %></main>
+        <main>
+          <%= yield %>
+        </main>
       </div>
       <%= render "layouts/footer" %>    
     </div>

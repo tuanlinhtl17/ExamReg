@@ -19,7 +19,7 @@ gem "uglifier", ">= 1.3.0"
 # Use CoffeeScript for .coffee assets and views
 gem "coffee-rails", "~> 4.2"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-#gem "turbolinks", "~> 5"
+gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 # Use Redis adapter to run Action Cable in production
@@ -52,7 +52,16 @@ gem "font-awesome-rails"
 #sweetalert
 gem "rails-assets-sweetalert2", "~> 5.1.1", source: "https://rails-assets.org"
 gem "sweet-alert2-rails"
-# gem 'rails-sweetalert2-confirm'
+
+#validate date
+gem "validates_timeliness", "~> 5.0.0.alpha3"
+
+#import excel
+gem "rubyzip", ">= 1.2.1"
+gem "axlsx", git: "https://github.com/randym/axlsx.git", ref: "c8ac844"
+gem "axlsx_rails"
+gem "roo", "~> 2.7.0"
+gem "active_storage_drag_and_drop"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

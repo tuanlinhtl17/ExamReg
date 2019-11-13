@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: c8ac844572b25fda358cc01d2104720c4c42f450
+  ref: c8ac844
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -25,6 +36,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_storage_drag_and_drop (1.0.3)
+      rack (~> 2.0.6)
+      rails (>= 5.2.2.1)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -50,6 +64,9 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.7.1)
       execjs
+    axlsx_rails (0.6.0)
+      actionpack (>= 3.1)
+      caxlsx (>= 3.0)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -67,6 +84,11 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    caxlsx (3.0.1)
+      htmlentities (~> 4.3, >= 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (~> 1.10, >= 1.10.4)
+      rubyzip (>= 1.3.0, < 3)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -82,17 +104,18 @@ GEM
     crass (1.0.5)
     erubi (1.9.0)
     execjs (2.7.0)
-    ffi (1.11.1)
+    ffi (1.11.2)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
-    jquery-datatables (1.10.19.1)
+    jquery-datatables (1.10.20)
     jquery-rails (4.3.5)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -116,7 +139,7 @@ GEM
     msgpack (1.3.1)
     mysql2 (0.5.2)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     popper_js (1.14.5)
     public_suffix (4.0.1)
@@ -156,8 +179,11 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    roo (2.7.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
     ruby_dep (1.5.0)
-    rubyzip (2.0.0)
+    rubyzip (1.3.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -195,6 +221,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    timeliness (0.4.3)
     toastr-rails (1.0.3)
       railties (>= 3.1.0)
     turbolinks (5.2.1)
@@ -204,6 +231,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    validates_timeliness (5.0.0.alpha5)
+      timeliness (>= 0.3.10, < 1)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -219,6 +248,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_storage_drag_and_drop
+  axlsx!
+  axlsx_rails
   bootsnap (>= 1.1.0)
   bootstrap (>= 4.3.1)
   byebug
@@ -234,6 +266,8 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.3)
   rails-assets-sweetalert2 (~> 5.1.1)!
+  roo (~> 2.7.0)
+  rubyzip (>= 1.2.1)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -243,6 +277,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
+  validates_timeliness (~> 5.0.0.alpha3)
   web-console (>= 3.3.0)
 
 RUBY VERSION

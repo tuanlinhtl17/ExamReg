@@ -1,0 +1,15 @@
+<tr id="sinh_vien_<%= sinh_vien.id %>">
+  <td><%= sinh_vien.ten %></td>
+  <td><%= sinh_vien.ma_sv %></td>
+  <td><%= sinh_vien.ngay_sinh %></td>
+  <td><%= sinh_vien.khoa %></td>
+  <td><%= sinh_vien.lop %></td>
+  <td>
+    <%= link_to edit_admin_sinh_vien_path(sinh_vien), remote: true do %>
+      <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to admin_sinh_vien_path(sinh_vien), method: :delete, data: { confirm: "Bạn chắc chắn muốn xóa ?" }, remote: true do %>
+      <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+    <% end %>
+  </td>
+</tr>

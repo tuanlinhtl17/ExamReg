@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_094317) do
+ActiveRecord::Schema.define(version: 2019_11_06_094319) do
 
   create_table "ca_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "ten"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2019_11_06_094317) do
   end
 
   create_table "du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "hoc_phan_id"
+    t.bigint "mon_thi_id"
     t.bigint "sinh_vien_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hoc_phan_id"], name: "index_du_dieu_kiens_on_hoc_phan_id"
+    t.index ["mon_thi_id"], name: "index_du_dieu_kiens_on_mon_thi_id"
     t.index ["sinh_vien_id"], name: "index_du_dieu_kiens_on_sinh_vien_id"
   end
 
@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 2019_11_06_094317) do
   end
 
   create_table "khong_du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "hoc_phan_id"
+    t.bigint "mon_thi_id"
     t.bigint "sinh_vien_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hoc_phan_id"], name: "index_khong_du_dieu_kiens_on_hoc_phan_id"
+    t.index ["mon_thi_id"], name: "index_khong_du_dieu_kiens_on_mon_thi_id"
     t.index ["sinh_vien_id"], name: "index_khong_du_dieu_kiens_on_sinh_vien_id"
   end
 
@@ -96,9 +96,9 @@ ActiveRecord::Schema.define(version: 2019_11_06_094317) do
     t.string "password"
   end
 
-  add_foreign_key "du_dieu_kiens", "hoc_phans"
+  add_foreign_key "du_dieu_kiens", "mon_this"
   add_foreign_key "du_dieu_kiens", "sinh_viens"
-  add_foreign_key "khong_du_dieu_kiens", "hoc_phans"
+  add_foreign_key "khong_du_dieu_kiens", "mon_this"
   add_foreign_key "khong_du_dieu_kiens", "sinh_viens"
   add_foreign_key "lich_this", "ca_this"
   add_foreign_key "lich_this", "mon_this"

@@ -1,0 +1,5 @@
+if ($("#suaSinhVien").length) {
+  $("#suaSinhVien").remove() 
+}
+$('main').append('<%= escape_javascript(render(partial: "admin/sinh_viens/edit", locals: { sinh_vien: @sinh_vien })) %>')
+$("#suaSinhVien").modal("show");

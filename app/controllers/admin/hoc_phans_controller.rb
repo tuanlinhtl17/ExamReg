@@ -12,6 +12,7 @@ class Admin::HocPhansController < Admin::AdminController
 
   def create
     @hoc_phan_new = HocPhan.new hoc_phan_params
+    @hoc_phan_new.save
     respond_to do |format|
       format.js
     end 

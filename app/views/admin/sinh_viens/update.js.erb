@@ -1,0 +1,7 @@
+$("#suaSinhVien").modal("hide");
+<% if !@sinh_vien.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @sinh_vien })) %>')
+<% else %>
+  toastr.success("Sửa thông tin sinh viên thành công")
+  $('#sinh_vien_<%= @sinh_vien.id %>').replaceWith('<%= escape_javascript(render(partial: "admin/sinh_viens/sinh_vien", locals: { sinh_vien: @sinh_vien })) %>')
+<% end %>

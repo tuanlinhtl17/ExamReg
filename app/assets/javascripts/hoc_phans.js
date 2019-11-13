@@ -7,7 +7,7 @@ let initHocPhanTable = () => {
     "language": datatableLanguage,
     "columnDefs": [{
       "orderable": false,
-      "width": "7%",
+      "width": "10%",
       "targets": 2
     }]
   });

@@ -1,16 +1,16 @@
-<div class="modal" id="themSinhVien">
+<div class="modal" id="suaSinhVien">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Thêm sinh viên mới</h4>
+        <h4 class="modal-title">Sửa thông tin sinh viên</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= form_for [:admin, @sinh_vien_new], remote: true do |f| %>
+        <%= form_for [:admin, sinh_vien], remote: true do |f| %>
           <div class="register-top-grid">
             <div class="mation">
               <span>Tên sinh viên<label>*</label></span>

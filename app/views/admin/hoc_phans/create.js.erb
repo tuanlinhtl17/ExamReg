@@ -2,5 +2,9 @@ $("#themHocPhan").modal("hide");
 <% if !@hoc_phan_new.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @hoc_phan_new })) %>')
 <% else %>
+  if ($('.dataTables_empty')) {
+    $('.dataTables_empty').parent().remove()
+  }
+  $('#hocPhan tbody').append('<%= escape_javascript(render(partial: "admin/hoc_phans/hoc_phan", locals: { hoc_phan: @hoc_phan_new })) %>')
   toastr.success("Thêm học phần thành công")
 <% end %>

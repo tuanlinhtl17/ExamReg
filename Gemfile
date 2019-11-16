@@ -36,6 +36,10 @@ gem "jbuilder", "~> 2.5"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
+#Login
+gem "devise"
+gem "cancancan"
+
 #bootstrap
 gem "bootstrap", ">= 4.3.1"
 gem "toastr-rails"
@@ -55,6 +59,9 @@ gem "sweet-alert2-rails"
 
 #validate date
 gem "validates_timeliness", "~> 5.0.0.alpha3"
+
+#config variable
+gem "figaro"
 
 #import excel
 gem "rubyzip", ">= 1.2.1"

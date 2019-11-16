@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Examreg</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    "devise", "data-turbolinks-track" => true, media: "all" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= custom_bootstrap_flash %>
+  </head>
+
+  <body>
+    <%= render "layouts/header" %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+  </body>
+</html>

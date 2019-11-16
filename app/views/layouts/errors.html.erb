@@ -11,15 +11,8 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <%= render "layouts/header" %>
-      <div class="main">
-        <%= render "layouts/sidebar" %>
-        <main>
-          <%= yield %>
-        </main>
-      </div>
-      <%= render "layouts/footer" %>    
+    <div class="container">
+      <%= yield %>
     </div>
   </body>
 </html>

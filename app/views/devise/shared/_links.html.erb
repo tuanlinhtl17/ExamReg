@@ -1,0 +1,13 @@
+<%- if controller_name != "sessions" %>
+  <%= link_to "Đăng nhập", new_session_path(resource_name) %><br />
+<% end %>
+
+<% if resource_name == :sinh_vien %>
+  <%= link_to "Đăng nhập với tư cách admin", new_admin_session_path %><br />
+<% else resource_name == :admin %>
+  <%= link_to "Đăng nhập với tư cách sinh viên", new_sinh_vien_session_path %><br />
+<% end %>
+
+<%- if devise_mapping.recoverable? && controller_name != "passwords" %>
+  <%= link_to "Quên mật khẩu ?", new_password_path(resource_name) %><br />
+<% end %>

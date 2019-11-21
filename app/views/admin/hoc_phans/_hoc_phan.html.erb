@@ -2,7 +2,7 @@
   <td><%= hoc_phan.ten %></td>
   <td><%= hoc_phan.so_tin_chi %></td>
   <td>
-    <%= link_to edit_admin_hoc_phan_path(hoc_phan), data: { confirm: "Bạn chắc chắn muốn xóa ?" }, remote: true do %>
+    <%= link_to edit_admin_hoc_phan_path(hoc_phan), remote: true do %>
       <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
     <% end %>
     <%= link_to admin_hoc_phan_path(hoc_phan), method: :delete, data: { confirm: "Bạn chắc chắn muốn xóa ?" }, remote: true do %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_101035) do
+ActiveRecord::Schema.define(version: 2019_11_19_044746) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 2019_11_14_101035) do
     t.integer "so_tin_chi"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items_imports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "excel_file_name"
+    t.string "excel_content_type"
+    t.integer "excel_file_size"
+    t.datetime "excel_updated_at"
+    t.integer "status"
+    t.text "sub_items_errors"
   end
 
   create_table "khong_du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

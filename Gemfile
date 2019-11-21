@@ -23,7 +23,7 @@ gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 
@@ -69,6 +69,9 @@ gem "axlsx", git: "https://github.com/randym/axlsx.git", ref: "c8ac844"
 gem "axlsx_rails"
 gem "roo", "~> 2.7.0"
 gem "active_storage_drag_and_drop"
+gem "paperclip", "~> 6.0.0"
+gem "sidekiq"
+gem "sidekiq-cron", "~> 1.1"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

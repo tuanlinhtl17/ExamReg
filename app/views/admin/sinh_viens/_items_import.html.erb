@@ -1,0 +1,22 @@
+<tr id="items_import_<%= items_import.id %>">
+  <td>
+    <% if items_import.status == "failed" %>
+      <%= link_to admin_items_import_path(items_import), remote: true do %>
+        <%= items_import.excel_file_name %>
+      <% end %>
+    <% else %>
+      <%= items_import.excel_file_name %>
+    <% end %>
+  </td>
+  <td><%= items_import.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+  <td>
+    <% case items_import.status %>
+    <% when "importing" %>
+      <span class="badge badge-warning">Đang xử lý</span>
+    <% when "success" %>
+      <span class="badge badge-success">Thành công</span>
+    <% when "failed" %>
+      <span class="badge badge-danger">Xảy ra lỗi</span>
+    <% end %>
+  </td>
+</tr>

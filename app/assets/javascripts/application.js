@@ -22,6 +22,8 @@
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require toastr
+// require ActionCable
+//= require_tree ./channels
 
 //= require_tree .
 
@@ -40,7 +42,7 @@ const datatableLanguage = {
   }
 }
 
-$(document).ready(function () {
+$(document).ready( function () {
   toastr.options = {
     'closeButton': false,
     'debug': false,
@@ -62,4 +64,15 @@ $(document).ready(function () {
     confirmButtonText: 'Đồng ý',
     cancelButtonText: 'Thoát',
   };
+
+  // Javascript to enable link to tab
+  var url = document.location.toString();
+  if (url.match('#')) {
+    $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+  }
+
+  // Change hash for page-reload
+  $('.nav-tabs a').on('shown.bs.tab', function (e) {
+    window.location.hash = e.target.hash;
+  })
 });

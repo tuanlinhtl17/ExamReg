@@ -1,0 +1,18 @@
+col_widths= [40, 20, 30, 20, 20, 40] 
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "EFC376", border: Axlsx::STYLE_THIN_BORDER, b: true)
+  normal_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
+  date_cell = style.add_style(format_code: "dd-mm-yyyy", border: Axlsx::STYLE_THIN_BORDER)
+
+  wb.add_worksheet(name: "SinhVien") do |sheet|
+    highlight_row = [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+    normal_row = [normal_cell, normal_cell, date_cell, normal_cell, normal_cell, normal_cell]
+    sheet.add_row ["Tên", "Mã sinh viên", "Ngày sinh", "Khoa", "Lớp", "Email"], style: highlight_row
+    sheet.column_widths *col_widths
+    10.times.each do |time|
+      sheet.add_row ["", "", "", "", "", ""], style: normal_row
+    end
+  end
+end

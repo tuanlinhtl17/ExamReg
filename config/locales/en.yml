@@ -39,3 +39,18 @@ en:
               blank: "Tên không được trống"
             so_tin_chi:
               blank: "Số tín chỉ không được trống"
+        sinh_vien:
+          attributes:
+            ten:
+              blank: "Tên không được trống"
+            ma_sv:
+              blank: "Mã sinh viên không được trống"
+              uniqueness: "Mã sinh viên không được trùng"
+            ngay_sinh:
+              before_message: "Phải ít nhất 18 tuổi"
+            khoa:
+              blank: "Tên không được trống"
+            lop:
+              blank: "Tên không được trống"
+            email:
+              taken: "Email không được trùng"

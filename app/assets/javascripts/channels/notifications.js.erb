@@ -1,0 +1,47 @@
+var initializeNotification = function () {
+  (function () {
+    App.notifications = App.cable.subscriptions.create({
+      channel: 'NotificationChannel'
+    }, {
+      received: function (data) {
+        $('#notifications .dropdown').css('color', 'red');
+        $('#notification-list').prepend(this.renderMessage(data));
+      },
+
+      renderMessage: function (data) {
+        message = JSON.parse(data.message);
+        return notificationLi(message)
+      }
+    });
+  }).call(this);
+}
+
+function notificationLi(message) {
+  let ele = '<a href="' + message.link + '">';
+  ele += '<li class="notification-box bg-gray">';
+  ele += '<div class="row">';
+  ele += '<div class="col-lg-3 col-sm-3 col-3 text-center">';
+  ele += '<img src="/excelIcon.png" class="w-100 rounded-circle">';
+  ele += '</div>';
+  ele += '<div class="col-lg-8 col-sm-8 col-8">';
+  ele += '<strong class="text-info">Import dữ liệu</strong>';
+  ele += '<div>';
+  if (message.error) {
+    if (message.time) {
+      ele += 'Import dữ liệu lúc ' + message.time + ' đã xảy ra lỗi';
+    } else {
+      ele += message.info;
+    }
+  } else {
+    ele += 'Import dữ liệu lúc ' + message.time + ' đã hoàn thành';
+  }
+  ele += '</div>';
+  ele += '<small class="text-warning">' + message.now + '</small>';
+  ele += '</div>';
+  ele += '</div>';
+  ele += '</li>';
+  ele += '</a>'
+  return ele;
+}
+
+$(document).ready( initializeNotification);

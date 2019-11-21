@@ -103,3 +103,50 @@ table {
 .modal-backdrop.in {
   opacity: 0.5;
 }
+
+// notifications
+.dropdown-menu-center {
+  width: 260px;
+}
+
+#notifications .dropdown-menu {
+  top: 40px;
+  right: -5px;
+  left: unset;
+  width: 460px;
+  box-shadow: 0px 5px 7px -1px #c1c1c1;
+  padding-bottom: 0px;
+  padding: 0px;
+}
+
+#notifications .dropdown-menu:before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 12px;
+  border: 10px solid #343A40;
+  border-color: transparent transparent #343A40 transparent;
+}
+
+#notifications .head {
+  padding: 5px 15px;
+  border-radius: 3px 3px 0px 0px;
+}
+
+#notifications .footer {
+  padding: 5px 15px;
+  border-radius: 0px 0px 3px 3px;
+}
+
+#notifications .notification-box {
+  padding: 10px 0px;
+}
+
+#notifications .bg-gray {
+  background-color: #eee;
+}
+
+#notifications a {
+  text-decoration: none;
+  color: black;
+}

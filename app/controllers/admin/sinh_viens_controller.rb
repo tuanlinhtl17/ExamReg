@@ -4,10 +4,18 @@ class Admin::SinhViensController < Admin::AdminController
   def index
     @sinh_viens = SinhVien.all
     @sinh_vien_new = SinhVien.new
+    @items_imports = ItemsImport.all
+    @items_import_new = ItemsImport.new
     respond_to do |format|
       format.html
       format.js
     end    
+  end
+
+  def new
+    respond_to do |format|
+      format.xlsx
+    end     
   end
 
   def create

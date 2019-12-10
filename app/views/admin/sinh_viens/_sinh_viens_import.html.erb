@@ -1,0 +1,22 @@
+<tr id="sinh_viens_import_<%= sinh_viens_import.id %>">
+  <td>
+    <% if sinh_viens_import.status == "failed" %>
+      <%= link_to admin_sinh_viens_import_path(sinh_viens_import), remote: true do %>
+        <%= sinh_viens_import.excel_file_name %>
+      <% end %>
+    <% else %>
+      <%= sinh_viens_import.excel_file_name %>
+    <% end %>
+  </td>
+  <td><%= sinh_viens_import.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+  <td>
+    <% case sinh_viens_import.status %>
+    <% when "importing" %>
+      <span class="badge badge-warning">Đang xử lý</span>
+    <% when "success" %>
+      <span class="badge badge-success">Thành công</span>
+    <% when "failed" %>
+      <span class="badge badge-danger">Xảy ra lỗi</span>
+    <% end %>
+  </td>
+</tr>

@@ -1,9 +1,0 @@
-<% if @error %>
-  toastr.error('<%= @error %>');
-<% else %>
-  if ($('.dataTables_empty')) {
-    $('.dataTables_empty').parent().remove()
-  }
-  $('#itemsImport tbody').append('<%= escape_javascript(render(partial: "admin/sinh_viens/items_import", locals: { items_import: @items_import_new })) %>')
-  toastr.success("Đang import dữ liệu")
-<% end %>

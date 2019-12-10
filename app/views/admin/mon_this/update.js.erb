@@ -1,0 +1,7 @@
+$("#suaMonThi").modal("hide");
+<% if !@mon_thi.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @mon_thi })) %>')
+<% else %>
+  toastr.success("Sửa học phần thành công")
+  $('#mon_thi_<%= @mon_thi.id %>').replaceWith('<%= escape_javascript(render(partial: "admin/mon_this/mon_thi", locals: { mon_thi: @mon_thi })) %>')
+<% end %>

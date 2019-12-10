@@ -1,0 +1,16 @@
+<tr id="ky_thi_<%= ky_thi.id %>">
+  <td>
+    <%= link_to admin_ky_thi_path(ky_thi), remote: true do %>
+      <%= ky_thi.ten %>
+    <% end %>
+  </td>
+  <td><%= ky_thi.nam_hoc %></td>
+  <td>
+    <%= link_to edit_admin_ky_thi_path(ky_thi), remote: true do %>
+      <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to admin_ky_thi_path(ky_thi), method: :delete, data: { confirm: "Bạn chắc chắn muốn xóa ?" }, remote: true do %>
+      <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+    <% end %>
+  </td>
+</tr>

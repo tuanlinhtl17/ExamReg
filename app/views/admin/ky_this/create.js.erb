@@ -1,0 +1,10 @@
+$("#themKyThi").modal("hide");
+<% if !@ky_thi_new.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ky_thi_new })) %>')
+<% else %>
+  if ($('.dataTables_empty')) {
+    $('.dataTables_empty').parent().remove()
+  }
+  $('#kyThi tbody').append('<%= escape_javascript(render(partial: "admin/ky_this/ky_thi", locals: { ky_thi: @ky_thi_new })) %>')
+  toastr.success("Thêm học phần thành công")
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_044746) do
+ActiveRecord::Schema.define(version: 2019_12_09_094147) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,11 +25,18 @@ ActiveRecord::Schema.define(version: 2019_11_19_044746) do
   end
 
   create_table "ca_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "ten"
+    t.string "ten"
     t.datetime "bat_dau"
     t.datetime "ket_thuc"
+    t.date "ngay_thi"
+    t.bigint "ky_thi_id"
+    t.bigint "phong_may_id"
+    t.bigint "mon_thi_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["ky_thi_id"], name: "index_ca_this_on_ky_thi_id"
+    t.index ["mon_thi_id"], name: "index_ca_this_on_mon_thi_id"
+    t.index ["phong_may_id"], name: "index_ca_this_on_phong_may_id"
   end
 
   create_table "du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -41,22 +48,20 @@ ActiveRecord::Schema.define(version: 2019_11_19_044746) do
     t.index ["sinh_vien_id"], name: "index_du_dieu_kiens_on_sinh_vien_id"
   end
 
+  create_table "du_dieu_kiens_imports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status"
+    t.text "sub_du_dieu_kiens_errors"
+    t.string "excel_file_name"
+    t.string "excel_content_type"
+    t.integer "excel_file_size"
+    t.datetime "excel_updated_at"
+  end
+
   create_table "hoc_phans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
     t.integer "so_tin_chi"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "items_imports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "excel_file_name"
-    t.string "excel_content_type"
-    t.integer "excel_file_size"
-    t.datetime "excel_updated_at"
-    t.integer "status"
-    t.text "sub_items_errors"
   end
 
   create_table "khong_du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,20 +75,9 @@ ActiveRecord::Schema.define(version: 2019_11_19_044746) do
 
   create_table "ky_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
-    t.integer "nam_hoc"
+    t.string "nam_hoc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "lich_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "ca_thi_id"
-    t.bigint "phong_may_id"
-    t.bigint "mon_thi_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ca_thi_id"], name: "index_lich_this_on_ca_thi_id"
-    t.index ["mon_thi_id"], name: "index_lich_this_on_mon_thi_id"
-    t.index ["phong_may_id"], name: "index_lich_this_on_phong_may_id"
   end
 
   create_table "mon_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -101,16 +95,8 @@ ActiveRecord::Schema.define(version: 2019_11_19_044746) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "quan_tri_viens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "sinh_viens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
-    t.integer "ma_sv"
     t.date "ngay_sinh"
     t.string "khoa"
     t.string "lop"
@@ -128,13 +114,24 @@ ActiveRecord::Schema.define(version: 2019_11_19_044746) do
     t.index ["reset_password_token"], name: "index_sinh_viens_on_reset_password_token", unique: true
   end
 
+  create_table "sinh_viens_imports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "excel_file_name"
+    t.string "excel_content_type"
+    t.integer "excel_file_size"
+    t.datetime "excel_updated_at"
+    t.integer "status"
+    t.text "sub_sinh_viens_errors"
+  end
+
+  add_foreign_key "ca_this", "ky_this"
+  add_foreign_key "ca_this", "mon_this"
+  add_foreign_key "ca_this", "phong_mays"
   add_foreign_key "du_dieu_kiens", "mon_this"
   add_foreign_key "du_dieu_kiens", "sinh_viens"
   add_foreign_key "khong_du_dieu_kiens", "mon_this"
   add_foreign_key "khong_du_dieu_kiens", "sinh_viens"
-  add_foreign_key "lich_this", "ca_this"
-  add_foreign_key "lich_this", "mon_this"
-  add_foreign_key "lich_this", "phong_mays"
   add_foreign_key "mon_this", "hoc_phans"
   add_foreign_key "mon_this", "ky_this"
 end

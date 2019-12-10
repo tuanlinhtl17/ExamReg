@@ -43,7 +43,7 @@ en:
           attributes:
             ten:
               blank: "Tên không được trống"
-            ma_sv:
+            id:
               blank: "Mã sinh viên không được trống"
               uniqueness: "Mã sinh viên không được trùng"
             ngay_sinh:
@@ -54,3 +54,8 @@ en:
               blank: "Tên không được trống"
             email:
               taken: "Email không được trùng"
+        mon_thi:
+          attributes:
+            hoc_phan_id:
+              blank: "Học phần không được thiếu"
+              uniqueness: "Học phần không được trùng"

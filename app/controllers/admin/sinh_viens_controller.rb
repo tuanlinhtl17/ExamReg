@@ -4,8 +4,8 @@ class Admin::SinhViensController < Admin::AdminController
   def index
     @sinh_viens = SinhVien.all
     @sinh_vien_new = SinhVien.new
-    @items_imports = ItemsImport.all
-    @items_import_new = ItemsImport.new
+    @sinh_viens_imports = SinhViensImport.all
+    @sinh_viens_import_new = SinhViensImport.new
     respond_to do |format|
       format.html
       format.js
@@ -51,14 +51,14 @@ class Admin::SinhViensController < Admin::AdminController
   private
 
   def sinh_vien_params
-    params.require(:sinh_vien).permit(:ten, :ma_sv, :ngay_sinh, :khoa, :lop)
+    params.require(:sinh_vien).permit(:ten, :ngay_sinh, :khoa, :lop)
   end
 
   def find_sinh_vien
     @sinh_vien = SinhVien.find_by(id: params[:id])
     if !@sinh_vien
       redirect_to admin_root_path
-      @error = "Không tìm thấy học phần"
+      @error = "Không tìm thấy sinh viên"
     end
   end
 end

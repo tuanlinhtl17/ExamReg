@@ -1,0 +1,10 @@
+$("#themMonThi").modal("hide");
+<% if !@mon_thi_new.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @mon_thi_new })) %>')
+<% else %>
+  if ($('.dataTables_empty')) {
+    $('.dataTables_empty').parent().remove()
+  }
+  $('#monThi tbody').append('<%= escape_javascript(render(partial: "admin/mon_this/mon_thi", locals: { mon_thi: @mon_thi_new })) %>')
+  toastr.success("Thêm môn thi thành công")
+<% end %>

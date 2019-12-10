@@ -18,8 +18,14 @@ Rails.application.routes.draw do
     root to: "hoc_phans#index"
     resources :hoc_phans, except: [:new, :show]
     resources :sinh_viens, except: [:show] 
-    resources :ky_this, except: [:new, :show] 
-    resources :items_imports, only: [:create, :show] 
+    resources :ky_this, except: [:new] do
+      resources :mon_this, except: [:index, :new] do
+        resources :du_dieu_kiens_imports, only: [:create, :show] 
+        resources :khong_du_dieu_kiens_imports, only: [:create, :show]
+      end
+      resources :ca_thi 
+    end
+    resources :sinh_viens_imports, only: [:create, :show] 
   end
 
   root to: "home#index"

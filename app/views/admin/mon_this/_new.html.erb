@@ -1,0 +1,31 @@
+<div class="modal" id="themMonThi">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm môn thi mới</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= form_for [:admin, @ky_thi, @mon_thi_new], remote: true do |f| %>
+          <%= f.hidden_field :ky_thi_id, value: @ky_thi.id %>
+          <div class="register-top-grid">
+            <div class="mation">
+              <span>Tên học phần<label>*</label> </span>
+              <%= f.select(:hoc_phan_id, @hoc_phans.collect {|h| [ h.ten, h.id] }, {}, class: "form-control", id: "list-mon-hoc") %>
+            </div>
+            <br></br>
+            <div class="modal-footer">
+              <%= f.submit "Xác nhận", class: "btn btn-primary" %>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+          </div>
+        <% end %>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+</div>

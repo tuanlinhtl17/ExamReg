@@ -1,0 +1,23 @@
+<!-- Them ban ghi moi -->
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themMonThi">
+  Thêm môn thi mới
+</button>
+<br>
+<br>
+
+<!-- Bang du lieu -->
+<table id="monThi" class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "admin/mon_this/mon_thi", collection: @mon_this %>
+  </tbody>
+</table>
+
+<!-- Modal them moi -->
+<%= render partial: "admin/mon_this/new" %>

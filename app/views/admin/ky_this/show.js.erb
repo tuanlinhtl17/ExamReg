@@ -1,0 +1,12 @@
+$('main').html('<%= escape_javascript(render(partial: "admin/ky_this/show", locals: { ky_thi: @ky_thi })) %>');
+$(document).ready( function () {
+  initMonThiTable()
+  $('#list-mon-hoc').select2({ 
+    width: '200px',
+    language: {
+      noResults: function (params) {
+        return "Không có kết quả";
+      }
+    } 
+  });
+});

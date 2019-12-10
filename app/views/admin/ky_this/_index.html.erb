@@ -1,16 +1,28 @@
-<table id="kyThi" class="table table-striped table-bordered">
+<p>
+  <%= link_to "Kỳ thi", admin_ky_this_path, remote: true %>
+</p>
+<hr>
+
+<!-- Them ban ghi moi -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themKyThi">
+  Thêm kỳ thi mới
+</button>
+<br>
+<br>
+
+<!-- Bang du lieu -->
+<table id="kyThi" class="table table-striped table-bordered text-center">
   <thead>
     <tr>
-        <th>Tên</th>
-        <th>Năm học</th>
+      <th>Tên</th>
+      <th>Năm học</th>
+      <th>Hành động</th>
     </tr>
   </thead>
   <tbody>
-    <% ky_this.each do |ky_thi| %>
-      <tr>
-        <td><%= ky_thi.ten %></td>
-        <td><%= ky_thi.nam_hoc %></td>
-      </tr>
-    <% end %>
+    <%= render partial: "ky_thi", collection: @ky_this %>
   </tbody>
 </table>
+
+<!-- Modal them moi -->
+<%= render partial: "admin/ky_this/new" %>

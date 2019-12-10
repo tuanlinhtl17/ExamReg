@@ -22,6 +22,7 @@
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require toastr
+//= require select2
 // require ActionCable
 //= require_tree ./channels
 
@@ -42,7 +43,7 @@ const datatableLanguage = {
   }
 }
 
-$(document).ready( function () {
+$(document).ready(function () {
   toastr.options = {
     'closeButton': false,
     'debug': false,

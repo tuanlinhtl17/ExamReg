@@ -5,9 +5,12 @@ class SinhVien < ApplicationRecord
 
   attr_accessor :skip_password_validation
 
+  has_many :khong_du_dieu_kiens
+  has_many :du_dieu_kiens
+
   #Validation
+  validates :id, presence: true, uniqueness: {message: :uniqueness}
   validates :ten, presence: true
-  validates :ma_sv, presence: true, uniqueness: {message: :uniqueness}
   validates_date :ngay_sinh, before: lambda { 18.years.ago },
                                before_message: :before_message
   validates :khoa, presence: true

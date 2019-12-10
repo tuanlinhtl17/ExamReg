@@ -1,0 +1,22 @@
+<tr id="du_dieu_kiens_import_<%= du_dieu_kiens_import.id %>">
+  <td>
+    <% if du_dieu_kiens_import.status == "failed" %>
+      <%= link_to admin_du_dieu_kiens_import_path(du_dieu_kiens_import), remote: true do %>
+        <%= du_dieu_kiens_import.excel_file_name %>
+      <% end %>
+    <% else %>
+      <%= du_dieu_kiens_import.excel_file_name %>
+    <% end %>
+  </td>
+  <td><%= du_dieu_kiens_import.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+  <td>
+    <% case du_dieu_kiens_import.status %>
+    <% when "importing" %>
+      <span class="badge badge-warning">Đang xử lý</span>
+    <% when "success" %>
+      <span class="badge badge-success">Thành công</span>
+    <% when "failed" %>
+      <span class="badge badge-danger">Xảy ra lỗi</span>
+    <% end %>
+  </td>
+</tr>

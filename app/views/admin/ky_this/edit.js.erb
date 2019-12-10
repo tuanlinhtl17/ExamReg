@@ -1,0 +1,5 @@
+if ($("#suaKyThi").length) {
+  $("#suaKyThi").remove() 
+}
+$('main').append('<%= escape_javascript(render(partial: "admin/ky_this/edit", locals: { ky_thi: @ky_thi })) %>')
+$("#suaKyThi").modal("show");

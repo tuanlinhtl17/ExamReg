@@ -1,2 +1,35 @@
-<h1>HocPhans#new</h1>
-<p>Find me in app/views/hoc_phans/new.html.erb</p>
+<div class="modal" id="themKyThi">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm kỳ thi mới</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= form_for [:admin, @ky_thi_new], remote: true do |f| %>
+          <div class="register-top-grid">
+            <div class="mation">
+              <span>Tên kỳ thi<label>*</label></span>
+              <%= f.text_field :ten, class: "form-control" %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Năm học<label>*</label></span>
+              <%= f.text_field :nam_hoc, class: "form-control" %>
+            </div>
+            <br></br>
+            <div class="modal-footer">
+              <%= f.submit "Xác nhận", class: "btn btn-primary" %>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+          </div>
+        <% end %>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+</div>

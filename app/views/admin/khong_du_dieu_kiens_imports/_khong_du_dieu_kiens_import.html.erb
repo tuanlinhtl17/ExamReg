@@ -1,0 +1,22 @@
+<tr id="khong_du_dieu_kiens_import_<%= khong_du_dieu_kiens_import.id %>">
+  <td>
+    <% if khong_du_dieu_kiens_import.status == "failed" %>
+      <%= link_to admin_ky_thi_mon_thi_khong_du_dieu_kiens_import_path(id: khong_du_dieu_kiens_import, mon_thi_id: khong_du_dieu_kiens_import.mon_thi_id), remote: true do %>
+        <%= khong_du_dieu_kiens_import.excel_file_name %>
+      <% end %>
+    <% else %>
+      <%= khong_du_dieu_kiens_import.excel_file_name %>
+    <% end %>
+  </td>
+  <td><%= khong_du_dieu_kiens_import.created_at.strftime("%H:%M %d/%m/%Y") %></td>
+  <td>
+    <% case khong_du_dieu_kiens_import.status %>
+    <% when "importing" %>
+      <span class="badge badge-warning">Đang xử lý</span>
+    <% when "success" %>
+      <span class="badge badge-success">Thành công</span>
+    <% when "failed" %>
+      <span class="badge badge-danger">Xảy ra lỗi</span>
+    <% end %>
+  </td>
+</tr>

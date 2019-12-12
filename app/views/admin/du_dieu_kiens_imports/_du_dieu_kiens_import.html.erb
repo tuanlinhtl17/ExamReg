@@ -1,7 +1,7 @@
 <tr id="du_dieu_kiens_import_<%= du_dieu_kiens_import.id %>">
   <td>
     <% if du_dieu_kiens_import.status == "failed" %>
-      <%= link_to admin_du_dieu_kiens_import_path(du_dieu_kiens_import), remote: true do %>
+      <%= link_to admin_ky_thi_mon_thi_du_dieu_kiens_import_path(id: du_dieu_kiens_import, mon_thi_id: du_dieu_kiens_import.mon_thi_id), remote: true do %>
         <%= du_dieu_kiens_import.excel_file_name %>
       <% end %>
     <% else %>

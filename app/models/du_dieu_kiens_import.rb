@@ -1,8 +1,14 @@
 class DuDieuKiensImport < ApplicationRecord
   require "roo"
 
+  belongs_to :mon_thi
+
   has_attached_file :excel
-  validates_attachment_content_type :excel, content_type: ["application/zip"]
+  validates_attachment_content_type :excel, content_type: [
+    "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/zip"
+  ]
 
   serialize :sub_du_dieu_kiens_errors, Array
   enum status: [:importing, :success, :failed]
@@ -27,7 +33,7 @@ class DuDieuKiensImport < ApplicationRecord
       (2..current_sheet.last_row).map do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
         item = DuDieuKien.find_by(sinh_vien_id: row["Mã sinh viên"]) || DuDieuKien.new
-        item.attributes = translate_attributes(row).to_hash 
+        item.attributes = translate_attributes(row)
         imported_du_dieu_kiens << item       
       end
     end
@@ -43,6 +49,9 @@ class DuDieuKiensImport < ApplicationRecord
       "mã_sinh viên" => "sinh_vien_id"
     }
     row.transform_keys! {|k| key_map[k]}
+    row.to_hash 
+    row[:mon_thi_id] = mon_thi_id
+    row
   end
 
   def class_name_valid? class_name
@@ -67,23 +76,5 @@ class DuDieuKiensImport < ApplicationRecord
 
   def save_du_dieu_kien
     imported_du_dieu_kiens.each(&:save!)
-  end
-
-  def get_mon_thi
-    mon_thi = nil
-    i = 0
-    loop do
-      if imported_du_dieu_kiens[i].valid?
-        mon_thi = imported_du_dieu_kiens[i].mon_thi
-        break
-      else
-        if i == imported_du_dieu_kiens.length - 1
-          return nil
-        else
-          i += 1
-        end
-      end
-    end
-    MonThi.find_by id: mon_thi.id
   end
 end

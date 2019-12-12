@@ -2,8 +2,14 @@ class Admin::MonThisController < Admin::AdminController
   before_action :find_mon_thi, except: [:create]
 
   def show
-    @du_dieu_kiens_imports = DuDieuKiensImport.all
+    @du_dieu_kiens = @mon_thi.du_dieu_kiens
+    @du_dieu_kiens_imports = @mon_thi.du_dieu_kiens_imports
     @du_dieu_kiens_import_new = DuDieuKiensImport.new
+
+    @khong_du_dieu_kiens = @mon_thi.khong_du_dieu_kiens
+    @khong_du_dieu_kiens_imports = @mon_thi.khong_du_dieu_kiens_imports
+    @khong_du_dieu_kiens_import_new = KhongDuDieuKiensImport.new
+
     @ky_thi = @mon_thi.ky_thi
     respond_to do |format|
       format.html

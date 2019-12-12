@@ -20,6 +20,7 @@ class Admin::SinhViensController < Admin::AdminController
 
   def create
     @sinh_vien_new = SinhVien.new sinh_vien_params
+    @sinh_vien_new.skip_password_validation = true
     @sinh_vien_new.save
     respond_to do |format|
       format.js
@@ -51,7 +52,7 @@ class Admin::SinhViensController < Admin::AdminController
   private
 
   def sinh_vien_params
-    params.require(:sinh_vien).permit(:ten, :ngay_sinh, :khoa, :lop)
+    params.require(:sinh_vien).permit(:id,:ten, :email, :ngay_sinh, :khoa, :lop)
   end
 
   def find_sinh_vien

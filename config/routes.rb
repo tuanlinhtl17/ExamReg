@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     resources :sinh_viens, except: [:show] 
     resources :ky_this, except: [:new] do
       resources :mon_this, except: [:index, :new] do
-        resources :du_dieu_kiens_imports, only: [:create, :show] 
-        resources :khong_du_dieu_kiens_imports, only: [:create, :show]
+        resources :du_dieu_kiens_imports, only: [:new, :create, :show] 
+        resources :khong_du_dieu_kiens_imports, only: [:new, :create, :show]
       end
       resources :ca_thi 
     end

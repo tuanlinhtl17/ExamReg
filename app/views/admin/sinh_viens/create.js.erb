@@ -3,6 +3,10 @@ $('.alert').remove()
 <% if !@sinh_vien_new.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @sinh_vien_new })) %>')
 <% else %>
-  $('#sinhVien tbody').append('<%= escape_javascript(render(partial: "admin/sinh_viens/sinh_vien", locals: { sinh_vien: @sinh_vien_new })) %>')
+  if ($('#sinhVien .dataTables_empty')) {
+    $('#sinhVien .dataTables_empty').parent().remove()
+  }
+  $('#new_sinh_vien').trigger('reset');
+  $('#sinhVien').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/sinh_viens/sinh_vien", locals: { sinh_vien: @sinh_vien_new })) %>')[0]).draw()
   toastr.success('Thêm sinh viên thành công')
 <% end %>

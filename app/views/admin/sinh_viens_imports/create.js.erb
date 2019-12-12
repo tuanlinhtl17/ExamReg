@@ -4,6 +4,6 @@
   if ($('.dataTables_empty')) {
     $('.dataTables_empty').parent().remove()
   }
-  $('#sinhViensImport tbody').append('<%= escape_javascript(render(partial: "admin/sinh_viens/sinh_viens_import", locals: { sinh_viens_import: @sinh_viens_import_new })) %>')
+  $('#sinhViensImport').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/sinh_viens/sinh_viens_import", locals: { sinh_viens_import: @sinh_viens_import_new })) %>')[0]).draw()
   toastr.success("Đang import dữ liệu")
 <% end %>

@@ -4,7 +4,7 @@ class ImportDuDieuKiensWorker
   def perform data
     du_dieu_kiens_import_id = data[0]
     current_admin_id = data[1]
-    link = data[2]+ "#import"
+    link = data[2]+ "#du_dk"
     @du_dieu_kiens_import = DuDieuKiensImport.find_by id: du_dieu_kiens_import_id
     created_at = @du_dieu_kiens_import.created_at.strftime("%H:%M %d/%m/%Y")
     now = Time.now.strftime("%H:%M %d/%m/%Y")

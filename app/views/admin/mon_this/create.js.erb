@@ -5,6 +5,7 @@ $("#themMonThi").modal("hide");
   if ($('.dataTables_empty')) {
     $('.dataTables_empty').parent().remove()
   }
-  $('#monThi tbody').append('<%= escape_javascript(render(partial: "admin/mon_this/mon_thi", locals: { mon_thi: @mon_thi_new })) %>')
+  $('#new_mon_thi').trigger('reset');
+  $('#monThi').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/mon_this/mon_thi", locals: { mon_thi: @mon_thi_new })) %>')[0]).draw()
   toastr.success("Thêm môn thi thành công")
 <% end %>

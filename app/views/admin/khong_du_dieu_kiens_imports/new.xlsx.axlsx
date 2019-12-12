@@ -1,0 +1,17 @@
+col_widths= [40, 60] 
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "EFC376", border: Axlsx::STYLE_THIN_BORDER, b: true)
+  normal_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
+
+  wb.add_worksheet(name: "DuDieuKien") do |sheet|
+    highlight_row = [highlight_cell, highlight_cell]
+    normal_row = [normal_cell, normal_cell]
+    sheet.add_row ["Mã sinh viên", "Lý do"], style: highlight_row
+    sheet.column_widths *col_widths
+    10.times.each do |time|
+      sheet.add_row ["", ""], style: normal_row
+    end
+  end
+end

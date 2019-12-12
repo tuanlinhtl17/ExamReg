@@ -1,5 +1,7 @@
-class SinhViensImport < ApplicationRecord
+class KhongDuDieuKiensImport < ApplicationRecord
   require "roo"
+
+  belongs_to :mon_thi
 
   has_attached_file :excel
   validates_attachment_content_type :excel, content_type: [
@@ -8,7 +10,7 @@ class SinhViensImport < ApplicationRecord
     "application/zip"
   ]
 
-  serialize :sub_sinh_viens_errors, Array
+  serialize :sub_khong_du_dieu_kiens_errors, Array
   enum status: [:importing, :success, :failed]
 
   def open_spreadsheet
@@ -20,8 +22,8 @@ class SinhViensImport < ApplicationRecord
     end
   end
 
-  def load_imported_sinh_viens
-    imported_sinh_viens = []
+  def load_imported_khong_du_dieu_kiens
+    imported_khong_du_dieu_kiens = []
     spreadsheet = open_spreadsheet
     spreadsheet.sheets.each_with_index do |sheet, index|
       current_sheet = spreadsheet.sheet index
@@ -30,28 +32,27 @@ class SinhViensImport < ApplicationRecord
       end
       (2..current_sheet.last_row).map do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
-        item = SinhVien.find_by(id: row["Mã sinh viên"]) || SinhVien.new
-        item.attributes = translate_attributes(row).to_hash 
-        imported_sinh_viens << item       
+        item = KhongDuDieuKien.find_by(sinh_vien_id: row["Mã sinh viên"]) || KhongDuDieuKien.new
+        item.attributes = translate_attributes(row)
+        imported_khong_du_dieu_kiens << item       
       end
     end
-    imported_sinh_viens
+    imported_khong_du_dieu_kiens
   end
 
-  def imported_sinh_viens
-    @imported_sinh_viens ||= load_imported_sinh_viens
+  def imported_khong_du_dieu_kiens
+    @imported_khong_du_dieu_kiens ||= load_imported_khong_du_dieu_kiens
   end
 
   def translate_attributes row
     key_map = {
-      "tên" => 'ten', 
-      "mã_sinh viên" => 'id', 
-      "ngày_sinh" => 'ngay_sinh', 
-      "khoa" => 'khoa',
-      "lớp" => 'lop', 
-      "email" => 'email'
+      "mã_sinh viên" => "sinh_vien_id",
+      "lý_do" => "ly_do"
     }
     row.transform_keys! {|k| key_map[k]}
+    row.to_hash 
+    row[:mon_thi_id] = mon_thi_id
+    row
   end
 
   def class_name_valid? class_name
@@ -59,23 +60,22 @@ class SinhViensImport < ApplicationRecord
   end
 
   def is_valid?
-    imported_sinh_viens.map { |item| item.skip_password_validation = true }
-    imported_sinh_viens.map(&:valid?).all?
+    imported_khong_du_dieu_kiens.map(&:valid?).all?
   end
 
   def add_errors
     unless is_valid?
-      imported_sinh_viens.each_with_index do |item, index|
+      imported_khong_du_dieu_kiens.each_with_index do |item, index|
         if !item.valid?
           item.errors.messages.values.each do |msg|
-            sub_sinh_viens_errors << { line: index + 2, message: msg[0]}
+            sub_khong_du_dieu_kiens_errors << { line: index + 2, message: msg[0]}
           end
         end
       end
     end
   end
 
-  def save_sinh_vien
-    imported_sinh_viens.each(&:save!)
+  def save_khong_du_dieu_kien
+    imported_khong_du_dieu_kiens.each(&:save!)
   end
 end

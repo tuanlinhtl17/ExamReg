@@ -2,6 +2,6 @@ $("#suaKyThi").modal("hide");
 <% if !@ky_thi.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ky_thi })) %>')
 <% else %>
-  toastr.success("Sửa học phần thành công")
+  toastr.success("Sửa kỳ thi thành công")
   $('#ky_thi_<%= @ky_thi.id %>').replaceWith('<%= escape_javascript(render(partial: "admin/ky_this/ky_thi", locals: { ky_thi: @ky_thi })) %>')
 <% end %>

@@ -1,1 +1,16 @@
 $('main').html('<%= escape_javascript(render(partial: "admin/mon_this/show", locals: { mon_thi: @mon_thi, ky_thi: @ky_thi })) %>');
+$(document).ready( function () {
+  initDuDieuKiensTable();
+  initDuDieuKiensImportTable();
+  
+  initKhongDuDieuKiensTable();
+  initKhongDuDieuKiensImportTable();
+});
+
+$(document).on('turbolinks:load', function() {
+  initDuDieuKiensTable();
+  initDuDieuKiensImportTable();
+
+  initKhongDuDieuKiensTable();
+  initKhongDuDieuKiensImportTable();
+});

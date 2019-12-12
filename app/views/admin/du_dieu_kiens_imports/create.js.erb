@@ -1,9 +1,9 @@
 <% if @error %>
   toastr.error('<%= @error %>');
 <% else %>
-  if ($('.dataTables_empty')) {
-    $('.dataTables_empty').parent().remove()
+  if ($('#duDieuKiensImport .dataTables_empty')) {
+    $('#duDieuKiensImport .dataTables_empty').parent().remove()
   }
-  $('#sinhViensImport tbody').append('<%= escape_javascript(render(partial: "admin/sinh_viens/sinh_viens_import", locals: { sinh_viens_import: @sinh_viens_import_new })) %>')
+  $('#duDieuKiensImport').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/du_dieu_kiens_imports/du_dieu_kiens_import", locals: { du_dieu_kiens_import: @du_dieu_kiens_import_new })) %>')[0]).draw()
   toastr.success("Đang import dữ liệu")
 <% end %>

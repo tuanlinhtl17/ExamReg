@@ -59,3 +59,15 @@ en:
             hoc_phan_id:
               blank: "Học phần không được thiếu"
               uniqueness: "Học phần không được trùng"
+        du_dieu_kien:
+          attributes:
+            sinh_vien:
+              required: "Không có sinh viên này trong hệ thống"
+            mon_thi:
+              required: "Không có môn thi này trong hệ thống"
+        khong_du_dieu_kien:
+          attributes:
+            sinh_vien:
+              required: "Không có sinh viên này trong hệ thống"
+            mon_thi:
+              required: "Không có môn thi này trong hệ thống"

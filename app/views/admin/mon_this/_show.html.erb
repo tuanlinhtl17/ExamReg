@@ -15,9 +15,9 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="du_dk" role="tabpanel" aria-labelledby="du_dk-tab">
-    <%= render partial: "admin/mon_this/list_du_dk", locals: { ky_thi: ky_thi, mon_thi: mon_thi } %>
+    <%= render partial: "admin/du_dieu_kiens/list_du_dk", locals: { ky_thi: ky_thi, mon_thi: mon_thi } %>
   </div>
-  <div class="tab-pane fade show active" id="khong_du_dk" role="tabpanel" aria-labelledby="khong_du_dk-tab">
-    <%= render partial: "admin/mon_this/list_khong_du_dk", locals: { ky_thi: ky_thi } %>
+  <div class="tab-pane fade show" id="khong_du_dk" role="tabpanel" aria-labelledby="khong_du_dk-tab">
+    <%= render partial: "admin/khong_du_dieu_kiens/list_khong_du_dk", locals: { ky_thi: ky_thi, mon_thi: mon_thi } %>
   </div>
 </div>

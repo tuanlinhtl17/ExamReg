@@ -1,0 +1,9 @@
+<% if @error %>
+  toastr.error('<%= @error %>');
+<% else %>
+  if ($('#khongDuDieuKiensImport .dataTables_empty')) {
+    $('#khongDuDieuKiensImport .dataTables_empty').parent().remove()
+  }
+  $('#khongDuDieuKiensImport').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/khong_du_dieu_kiens_imports/khong_du_dieu_kiens_import", locals: { khong_du_dieu_kiens_import: @khong_du_dieu_kiens_import_new })) %>')[0]).draw()
+  toastr.success("Đang import dữ liệu")
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_094147) do
+ActiveRecord::Schema.define(version: 2019_12_12_055354) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,10 +51,14 @@ ActiveRecord::Schema.define(version: 2019_12_09_094147) do
   create_table "du_dieu_kiens_imports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "status"
     t.text "sub_du_dieu_kiens_errors"
+    t.bigint "mon_thi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "excel_file_name"
     t.string "excel_content_type"
     t.integer "excel_file_size"
     t.datetime "excel_updated_at"
+    t.index ["mon_thi_id"], name: "index_du_dieu_kiens_imports_on_mon_thi_id"
   end
 
   create_table "hoc_phans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,10 +71,24 @@ ActiveRecord::Schema.define(version: 2019_12_09_094147) do
   create_table "khong_du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "mon_thi_id"
     t.bigint "sinh_vien_id"
+    t.text "ly_do"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mon_thi_id"], name: "index_khong_du_dieu_kiens_on_mon_thi_id"
     t.index ["sinh_vien_id"], name: "index_khong_du_dieu_kiens_on_sinh_vien_id"
+  end
+
+  create_table "khong_du_dieu_kiens_imports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "status"
+    t.text "sub_khong_du_dieu_kiens_errors"
+    t.bigint "mon_thi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "excel_file_name"
+    t.string "excel_content_type"
+    t.integer "excel_file_size"
+    t.datetime "excel_updated_at"
+    t.index ["mon_thi_id"], name: "index_khong_du_dieu_kiens_imports_on_mon_thi_id"
   end
 
   create_table "ky_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -130,8 +148,10 @@ ActiveRecord::Schema.define(version: 2019_12_09_094147) do
   add_foreign_key "ca_this", "phong_mays"
   add_foreign_key "du_dieu_kiens", "mon_this"
   add_foreign_key "du_dieu_kiens", "sinh_viens"
+  add_foreign_key "du_dieu_kiens_imports", "mon_this"
   add_foreign_key "khong_du_dieu_kiens", "mon_this"
   add_foreign_key "khong_du_dieu_kiens", "sinh_viens"
+  add_foreign_key "khong_du_dieu_kiens_imports", "mon_this"
   add_foreign_key "mon_this", "hoc_phans"
   add_foreign_key "mon_this", "ky_this"
 end

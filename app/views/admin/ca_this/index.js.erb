@@ -1,0 +1,4 @@
+$('main').html('<%= escape_javascript(render(partial: "admin/ca_this/index", locals: { ca_this: @ca_this })) %>');
+$(document).ready( function () {
+  initHocPhanTable()
+});

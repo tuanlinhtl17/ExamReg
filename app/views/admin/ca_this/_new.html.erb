@@ -1,0 +1,58 @@
+<div class="modal" id="themCaThi">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm ca thi mới</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= form_for [:admin, @ky_thi, @ca_thi_new], remote: true do |f| %>
+          <%= f.hidden_field :ky_thi_id, value: @ky_thi.id %>
+          <div class="register-top-grid">
+            <div class="mation">
+              <span>Tên ca thi<label>*</label></span>
+              <%= f.text_field :ten, class: "form-control" %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Ngày thi<label>*</label></span>
+              <%= f.date_field :ngay_thi, class: "form-control" %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Giờ bắt đầu<label>*</label></span>
+              <%= f.time_field :bat_dau, class: "form-control" %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Giờ kết thúc<label>*</label></span>
+              <%= f.time_field :ket_thuc, class: "form-control" %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Môn thi<label>*</label></span>
+              <br>
+              <%= f.select(:mon_thi_id, @mon_this.collect {|mt| [ mt.hoc_phan.ten, mt.id] }, {}, class: "form-control", id: "list-mon-thi") %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Phòng máy<label>*</label></span>
+              <br>
+              <%= f.select(:phong_may_id, @phong_mays.collect {|pm| [ pm.ten, pm.id] }, {}, class: "form-control", id: "list-phong-may") %>
+            </div>
+            <br></br>
+            <div class="modal-footer">
+              <%= f.submit "Xác nhận", class: "btn btn-primary" %>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+          </div>
+        <% end %>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+</div>

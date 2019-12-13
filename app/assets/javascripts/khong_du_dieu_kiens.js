@@ -3,10 +3,12 @@ $(document).ready(function () {
 });
 
 let initKhongDuDieuKiensTable = () => {
-  $('#khongDuDieuKiens').DataTable({
-    "language": datatableLanguage,
-    "order": [
-      [1, "asc"]
-    ]
-  });
+  if (!$.fn.dataTable.isDataTable('#khongDuDieuKiens')) {
+    $('#khongDuDieuKiens').DataTable({
+      "language": datatableLanguage,
+      "order": [
+        [1, "asc"]
+      ]
+    });
+  }
 }

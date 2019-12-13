@@ -76,6 +76,9 @@ gem "sidekiq-cron", "~> 1.1"
 #select-2
 gem "select2-rails"
 
+#bootstrap - date & time picker
+gem "bootstrap-datepicker-rails"
+
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -1,5 +1,5 @@
 $('#themSinhVien').modal('hide');
-$('.alert').remove()
+$('.alert').remove();
 <% if !@sinh_vien_new.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @sinh_vien_new })) %>')
 <% else %>

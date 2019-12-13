@@ -59,8 +59,8 @@ class Admin::MonThisController < Admin::AdminController
   def find_mon_thi
     @mon_thi = MonThi.find_by(id: params[:id])
     if !@mon_thi
-      redirect_to admin_root_path
-      @error = "Không tìm thấy môn thi"
+      redirect_to admin_ky_thi_mon_this_path
+      flash[:error] = "Không tìm thấy môn thi"
     end
   end
 end

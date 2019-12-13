@@ -1,0 +1,8 @@
+$("#suaCaThi").modal("hide");
+$('.alert').remove();
+<% if !@ca_thi.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ca_thi })) %>')
+<% else %>
+  toastr.success("Sửa học phần thành công")
+  $('#ca_thi_<%= @ca_thi.id %>').replaceWith('<%= escape_javascript(render(partial: "admin/ca_this/ca_thi", locals: { ca_thi: @ca_thi })) %>')
+<% end %>

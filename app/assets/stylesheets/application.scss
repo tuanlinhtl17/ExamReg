@@ -19,6 +19,8 @@
 @import "datatables";
 @import "toastr";
 @import "select2";
+@import "bootstrap-datepicker";
+@import "bootstrap-timepicker";
 
 html,
 body {
@@ -150,4 +152,8 @@ table {
 #notifications a {
   text-decoration: none;
   color: black;
+}
+
+#caThi {
+  width: 100% !important;
 }

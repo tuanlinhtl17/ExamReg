@@ -3,10 +3,12 @@ $(document).ready(function () {
 });
 
 let initDuDieuKiensTable = () => {
-  $('#duDieuKiens').DataTable({
-    "language": datatableLanguage,
-    "order": [
-      [1, "asc"]
-    ]
-  });
+  if (!$.fn.dataTable.isDataTable('#duDieuKiens')) {
+    $('#duDieuKiens').DataTable({
+      "language": datatableLanguage,
+      "order": [
+        [1, "asc"]
+      ]
+    });
+  }
 }

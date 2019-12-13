@@ -8,6 +8,10 @@ namespace :db do
     
     Admin.create email: "admin@vnu.edu.vn", password: "123456"
 
+    10.times.each do |t|
+      PhongMay.create ten: "#{t}-G2"
+    end
+
     puts "The data was created successfully."
   end
 end

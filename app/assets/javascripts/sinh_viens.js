@@ -1,9 +1,11 @@
-$(document).ready( function () {
+$(document).ready(function () {
   initSinhVienTable()
 });
 
 const initSinhVienTable = () => {
-  $('#sinhVien').DataTable({
-    "language": datatableLanguage
-  });
+  if (!$.fn.dataTable.isDataTable('#sinhVien')) {
+    $('#sinhVien').DataTable({
+      "language": datatableLanguage
+    });
+  }
 }

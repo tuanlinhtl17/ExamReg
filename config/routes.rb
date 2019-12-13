@@ -23,7 +23,7 @@ Rails.application.routes.draw do
         resources :du_dieu_kiens_imports, only: [:new, :create, :show] 
         resources :khong_du_dieu_kiens_imports, only: [:new, :create, :show]
       end
-      resources :ca_thi 
+      resources :ca_this, except: [:new, :show]
     end
     resources :sinh_viens_imports, only: [:create, :show] 
   end

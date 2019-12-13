@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   activerecord:
     errors:
@@ -48,6 +17,7 @@ en:
               uniqueness: "Mã sinh viên không được trùng"
             ngay_sinh:
               before_message: "Phải ít nhất 18 tuổi"
+              invalid_date_message: "Ngày sinh không hợp lệ"
             khoa:
               blank: "Tên không được trống"
             lop:
@@ -71,3 +41,26 @@ en:
               required: "Không có sinh viên này trong hệ thống"
             mon_thi:
               required: "Không có môn thi này trong hệ thống"
+            ly_do:
+              blank: "Thiếu lý do cấm thi"
+        ca_thi:
+          attributes:
+            ky_thi:
+              required: "Không có kỳ thi này trong hệ thống"
+            phong_may:
+              required: "Không có phòng máy này trong hệ thống"
+            mon_thi:
+              required: "Không có môn thi này trong hệ thống"    
+            ten:
+              blank: "Tên không được thiếu"
+            ngay_thi:
+              invalid_date_message: "Ngày thi không hợp lệ"   
+              on_or_after_message: "Ngày thi phải trùng hoặc sau hôm nay"
+            bat_dau:
+              invalid_time_message: "Giờ bắt đầu không hợp lệ"
+              on_or_before_message: "Giờ bắt đầu phải trước 4:00 pm"
+              on_or_after_message: "Giờ bắt đầu phải sau 7:00 am"
+            ket_thuc:
+              invalid_time_message: "Giờ kết thúc không hợp lệ"
+              on_or_before_message: "Giờ kết thúc phải trước 6:00 pm"
+              on_or_after_message: "Giờ kết thúc phải sau 8:00 am"

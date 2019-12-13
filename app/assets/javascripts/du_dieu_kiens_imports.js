@@ -3,15 +3,17 @@ $(document).ready(function () {
 });
 
 let initDuDieuKiensImportTable = () => {
-  $('#duDieuKiensImport').DataTable({
-    "language": datatableLanguage,
-    "columnDefs": [{
-      "orderable": false,
-      "width": "10%",
-      "targets": 2
-    }],
-    "order": [
-      [1, "asc"]
-    ]
-  });
+  if (!$.fn.dataTable.isDataTable('#duDieuKiensImport')) {
+    $('#duDieuKiensImport').DataTable({
+      "language": datatableLanguage,
+      "columnDefs": [{
+        "orderable": false,
+        "width": "10%",
+        "targets": 2
+      }],
+      "order": [
+        [1, "asc"]
+      ]
+    });
+  }
 }

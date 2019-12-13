@@ -1,4 +1,5 @@
 $("#themKyThi").modal("hide");
+$('.alert').remove();
 <% if !@ky_thi_new.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ky_thi_new })) %>')
 <% else %>

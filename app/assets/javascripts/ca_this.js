@@ -1,15 +1,15 @@
 $(document).ready(function () {
-  initHocPhanTable()
+  initCaThiTable()
 });
 
-let initHocPhanTable = () => {
-  if (!$.fn.dataTable.isDataTable('#hocPhan')) {
-    $('#hocPhan').DataTable({
+let initCaThiTable = () => {
+  if (!$.fn.dataTable.isDataTable('#caThi')) {
+    $('#caThi').DataTable({
       "language": datatableLanguage,
       "columnDefs": [{
         "orderable": false,
         "width": "10%",
-        "targets": 2
+        "targets": 6
       }]
     });
   }

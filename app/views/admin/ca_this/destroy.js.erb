@@ -1,0 +1,6 @@
+<% if @error %>
+  toastr.error(@error)
+<% else %>
+  $('#hoc_phan_<%= @hoc_phan.id %>').remove()
+  toastr.success("Xóa ca thi thành công")
+<% end %>

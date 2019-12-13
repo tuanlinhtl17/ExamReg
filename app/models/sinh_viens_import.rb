@@ -30,7 +30,7 @@ class SinhViensImport < ApplicationRecord
       end
       (2..current_sheet.last_row).map do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
-        item = SinhVien.find_by(id: row["Mã sinh viên"]) || SinhVien.new
+        item = SinhVien.find_by(id: row["mã_sinh viên"]) || SinhVien.new
         item.attributes = translate_attributes(row).to_hash 
         imported_sinh_viens << item       
       end

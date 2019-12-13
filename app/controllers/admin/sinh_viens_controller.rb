@@ -58,8 +58,8 @@ class Admin::SinhViensController < Admin::AdminController
   def find_sinh_vien
     @sinh_vien = SinhVien.find_by(id: params[:id])
     if !@sinh_vien
-      redirect_to admin_root_path
-      @error = "Không tìm thấy sinh viên"
+      redirect_to admin_sinh_viens_path
+      flash[:error] = "Không tìm thấy sinh viên"
     end
   end
 end

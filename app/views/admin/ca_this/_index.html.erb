@@ -1,0 +1,28 @@
+<!-- Them ban ghi moi -->
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themCaThi">
+  Thêm ca thi
+</button>
+<br>
+<br>
+
+<!-- Bang du lieu -->
+<table id="caThi" class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th>Tên ca thi</th>
+      <th>Ngày thi</th>
+      <th>Giờ bắt đầu</th>
+      <th>Giờ kết thúc</th>
+      <th>Môn thi</th>
+      <th>Phòng máy</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "admin/ca_this/ca_thi", collection: @ca_this %>
+  </tbody>
+</table>
+
+<!-- Modal them moi -->
+<%= render partial: "admin/ca_this/new" %>

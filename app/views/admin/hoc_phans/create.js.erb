@@ -1,4 +1,5 @@
 $("#themHocPhan").modal("hide");
+$('.alert').remove();
 <% if !@hoc_phan_new.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @hoc_phan_new })) %>')
 <% else %>

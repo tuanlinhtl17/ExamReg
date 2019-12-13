@@ -23,6 +23,8 @@
 //= require sweet-alert2-rails
 //= require toastr
 //= require select2
+//= require bootstrap-datepicker
+//= require bootstrap-timepicker
 // require ActionCable
 //= require_tree ./channels
 

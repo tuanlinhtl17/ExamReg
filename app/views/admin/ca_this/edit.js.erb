@@ -1,0 +1,6 @@
+if ($('#suaCaThi').length) {
+  $('#suaCaThi').remove() 
+}
+$('main').append('<%= escape_javascript(render(partial: "admin/ca_this/edit", locals: { ca_thi: @ca_thi })) %>')
+$('#suaCaThi').modal('show');
+$('#ca_thi_ngay_thi').datepicker();

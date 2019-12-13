@@ -49,8 +49,8 @@ class Admin::HocPhansController < Admin::AdminController
   def find_hoc_phan
     @hoc_phan = HocPhan.find_by(id: params[:id])
     if !@hoc_phan
-      redirect_to admin_root_path
-      @error = "Không tìm thấy học phần"
+      redirect_to admin_hoc_phans_path
+      flash[:error] = "Không tìm thấy học phần"
     end
   end
 end

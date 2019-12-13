@@ -1,3 +1,3 @@
 class PhongMay < ApplicationRecord
-  has_many :ca_this
+  has_many :ca_this, dependent: :destroy
 end

@@ -1,0 +1,12 @@
+$("#themCaThi").modal("hide");
+$('.alert').remove();
+<% if !@ca_thi_new.errors.messages.empty? %>
+  $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ca_thi_new })) %>')
+<% else %>
+  if ($('#caThi .dataTables_empty')) {
+    $('#caThi .dataTables_empty').parent().remove()
+  }
+  $('#new_ca_thi').trigger('reset');
+  $('#caThi').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/ca_this/ca_thi", locals: { ca_thi: @ca_thi_new })) %>')[0]).draw()
+  toastr.success("Thêm ca thi thành công")
+<% end %>

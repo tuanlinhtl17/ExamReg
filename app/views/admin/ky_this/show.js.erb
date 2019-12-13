@@ -1,8 +1,32 @@
 $('main').html('<%= escape_javascript(render(partial: "admin/ky_this/show", locals: { ky_thi: @ky_thi })) %>');
 $(document).ready( function () {
-  initMonThiTable()
+  initMonThiTable();
+  initCaThiTable();
+
   $('#list-mon-hoc').select2({ 
-    width: '200px',
+    width: '100%',
+    language: {
+      noResults: function (params) {
+        return "Không có kết quả";
+      }
+    } 
+  });
+
+  $('#list-mon-thi').select2({ 
+    width: '100%',
+    language: {
+      noResults: function (params) {
+        return "Không có kết quả";
+      }
+    } 
+  });
+
+  $('#ca_thi_ngay_thi').datepicker({
+    format: 'yyyy-mm-dd'
+  });
+
+  $('#list-phong-may').select2({ 
+    width: '100%',
     language: {
       noResults: function (params) {
         return "Không có kết quả";

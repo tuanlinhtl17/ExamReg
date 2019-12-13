@@ -14,6 +14,11 @@ class Admin::KyThisController < Admin::AdminController
     @mon_this = @ky_thi.mon_this
     @mon_thi_new = MonThi.new
     @hoc_phans = HocPhan.all
+
+    @ca_this = @ky_thi.ca_this
+    @ca_thi_new = CaThi.new
+    @phong_mays = PhongMay.all
+
     respond_to do |format|
       format.html
       format.js
@@ -59,8 +64,8 @@ class Admin::KyThisController < Admin::AdminController
   def find_ky_thi
     @ky_thi = KyThi.find_by(id: params[:id])
     if !@ky_thi
-      redirect_to admin_root_path
-      @error = "Không tìm thấy kỳ thi"
+      redirect_to admin_ky_this_path
+      flash[:error] = "Không tìm thấy kỳ thi"
     end
   end
 end

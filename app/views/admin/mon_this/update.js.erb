@@ -1,4 +1,5 @@
 $("#suaMonThi").modal("hide");
+$('.alert').remove();
 <% if !@mon_thi.errors.messages.empty? %>
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @mon_thi })) %>')
 <% else %>

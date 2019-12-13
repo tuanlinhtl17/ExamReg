@@ -32,9 +32,11 @@ class KhongDuDieuKiensImport < ApplicationRecord
       end
       (2..current_sheet.last_row).map do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
-        item = KhongDuDieuKien.find_by(sinh_vien_id: row["Mã sinh viên"]) || KhongDuDieuKien.new
-        item.attributes = translate_attributes(row)
-        imported_khong_du_dieu_kiens << item       
+        dudk = DuDieuKien.find_by(sinh_vien_id: row["mã_sinh viên"])
+        dudk.delete if dudk
+        kodudk = KhongDuDieuKien.find_by(sinh_vien_id: row["mã_sinh viên"]) || KhongDuDieuKien.new
+        kodudk.attributes = translate_attributes(row)
+        imported_khong_du_dieu_kiens << kodudk       
       end
     end
     imported_khong_du_dieu_kiens

@@ -38,11 +38,15 @@
               <br>
               <%= f.select(:mon_thi_id, @mon_this.collect {|mt| [ mt.hoc_phan.ten, mt.id] }, {}, class: "form-control", id: "list-mon-thi") %>
             </div>
-            <br>
+            <hr>
             <div class="mation">
-              <span>Phòng máy<label>*</label></span>
-              <br>
-              <%= f.select(:phong_may_id, @phong_mays.collect {|pm| [ pm.ten, pm.id] }, {}, class: "form-control", id: "list-phong-may") %>
+              <h4 class="text-center"><strong>Danh sách phòng máy</strong></h4>
+              <%= f.fields_for :ca_thi_phong_mays do |ca_thi_phong_may| %>
+                <%= render "ca_thi_phong_may_fields", f: ca_thi_phong_may %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association "Thêm phòng máy", f, :ca_thi_phong_mays %>
+              </div>
             </div>
             <br></br>
             <div class="modal-footer">

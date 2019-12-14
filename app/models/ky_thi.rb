@@ -4,4 +4,12 @@ class KyThi < ApplicationRecord
 
   validates :ten, presence: true
   validates :nam_hoc, presence: true
+
+  def get_phong_may
+    phong_mays = []
+    ca_this.each do |ct|
+      phong_mays += ct.phong_mays
+    end
+    phong_mays
+  end
 end

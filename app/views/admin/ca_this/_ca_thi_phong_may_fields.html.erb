@@ -1,0 +1,16 @@
+<div class="nested-fields">
+  <%= f.select(:phong_may_id, @phong_mays.collect {|pm| [ pm.ten, pm.id] }, {}, class: "form-control list-phong-may") %>
+  <%= link_to_remove_association button_tag("x", type: "button", class: "btn btn-danger"), f %>
+  <br>
+</div>
+
+<script>
+  $('.list-phong-may').select2({ 
+    width: '90%',
+    language: {
+      noResults: function (params) {
+        return "Không có kết quả";
+      }
+    } 
+  });
+</script>

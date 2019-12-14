@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Danh sách thi</title>
+  <%= stylesheet_link_tag "bootstrap.min.css", media: "all" %>
+  <style>
+    html, body {
+      overflow: auto;
+    }
+
+    body::-webkit-scrollbar { width: 0 !important }
+    .page-break { page-break-after: always; }
+  </style>
+</head>
+<body>
+  <% @ca_this.each do |ca_thi| %>
+    <% ca_thi.phong_mays.each do |phong_may| %>
+      <div class="page-break">
+        <h3 class="text-center">Danh sách thi môn: <strong><%= ca_thi.mon_thi.hoc_phan.ten %></strong></h3>
+        <p>Phòng máy: <strong><%= phong_may.ten %></strong></p>
+        <p><strong><%= ca_thi.ten %></strong></p>
+        <p>Ngày thi: <%= ca_thi.ngay_thi.strftime("%d/%m/%Y") %></p>
+        <p>Thời gian thi: <%= ca_thi.bat_dau.strftime("%R") %> - <%= ca_thi.ket_thuc.strftime("%R") %></p>
+        <table class="table table-striped table-bordered text-center">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên sinh viên</th>
+              <th>Mã sinh viên</th>
+              <th>Ngày sinh</th>
+              <th>Khoa</th>
+              <th>Lớp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% ca_thi.get_sinh_vien_by_phong_may(phong_may.id).each_with_index do |sinh_vien, index| %>
+              <tr id="sinh_vien_<%= sinh_vien.id %>">
+                <td><%= index + 1 %></td>
+                <td><%= sinh_vien.ten %></td>
+                <td><%= sinh_vien.id %></td>
+                <td><%= sinh_vien.ngay_sinh.strftime("%d/%m/%Y") %></td>
+                <td><%= sinh_vien.khoa %></td>
+                <td><%= sinh_vien.lop %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  <% end %>
+
+  <script>
+    window.print();
+  </script> 
+</body>
+</html>

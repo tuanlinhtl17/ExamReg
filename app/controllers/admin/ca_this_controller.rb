@@ -38,7 +38,8 @@ class Admin::CaThisController < Admin::AdminController
   private
 
   def ca_thi_params
-    params.require(:ca_thi).permit(:ten, :bat_dau, :ket_thuc, :ngay_thi, :ky_thi_id, :phong_may_id, :mon_thi_id)
+    params.require(:ca_thi).permit(:ten, :bat_dau, :ket_thuc, :ngay_thi, 
+      :ky_thi_id, :mon_thi_id, ca_thi_phong_mays_attributes: [:id, :phong_may_id, :_destroy])
   end
 
   def find_ca_thi

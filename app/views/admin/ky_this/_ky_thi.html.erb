@@ -12,5 +12,8 @@
     <%= link_to admin_ky_thi_path(ky_thi), method: :delete, data: { confirm: "Bạn chắc chắn muốn xóa ?" }, remote: true do %>
       <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
     <% end %>
+    <%= link_to admin_ky_thi_print_path(ky_thi), target: :_blank do %>
+      <i class="fa fa-lg fa-print" aria-hidden="true"></i>
+    <% end %>
   </td>
 </tr>

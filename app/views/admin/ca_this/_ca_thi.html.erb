@@ -4,7 +4,6 @@
   <td><%= ca_thi.bat_dau.strftime("%H:%M") %></td>
   <td><%= ca_thi.ket_thuc.strftime("%H:%M") %></td>
   <td><%= ca_thi.mon_thi.hoc_phan.ten %></td>
-  <td><%= ca_thi.phong_may.ten %></td>
   <td>
     <%= link_to edit_admin_ky_thi_ca_thi_path(id: ca_thi.id, ky_thi_id: ca_thi.ky_thi_id), remote: true do %>
       <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>

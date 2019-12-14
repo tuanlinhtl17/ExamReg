@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         resources :khong_du_dieu_kiens_imports, only: [:new, :create, :show]
       end
       resources :ca_this, except: [:new, :show]
+      get "/print", to: "ky_this#print"
     end
     resources :sinh_viens_imports, only: [:create, :show] 
   end

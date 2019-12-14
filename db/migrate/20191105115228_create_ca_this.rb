@@ -6,7 +6,6 @@ class CreateCaThis < ActiveRecord::Migration[5.2]
       t.datetime :ket_thuc
       t.date :ngay_thi
       t.references :ky_thi, foreign_key: true
-      t.references :phong_may, foreign_key: true
       t.references :mon_thi, foreign_key: true
 
       t.timestamps

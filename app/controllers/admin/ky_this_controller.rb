@@ -1,5 +1,5 @@
 class Admin::KyThisController < Admin::AdminController
-  before_action :find_ky_thi, only: [:show, :edit, :update, :destroy]
+  before_action :find_ky_thi, except: [:index, :create, :print]
 
   def index
     @ky_this = KyThi.all
@@ -53,6 +53,13 @@ class Admin::KyThisController < Admin::AdminController
     respond_to do |format|
       format.js
     end 
+  end
+
+  def print
+    @ky_thi = KyThi.find_by id: params[:ky_thi_id]
+    @ca_this = @ky_thi.ca_this
+
+    render layout: false
   end
 
   private

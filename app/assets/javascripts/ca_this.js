@@ -9,7 +9,7 @@ let initCaThiTable = () => {
       "columnDefs": [{
         "orderable": false,
         "width": "10%",
-        "targets": 6
+        "targets": 5
       }]
     });
   }

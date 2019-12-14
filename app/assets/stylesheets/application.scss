@@ -20,7 +20,6 @@
 @import "toastr";
 @import "select2";
 @import "bootstrap-datepicker";
-@import "bootstrap-timepicker";
 
 html,
 body {
@@ -156,4 +155,11 @@ table {
 
 #caThi {
   width: 100% !important;
+}
+
+.nested-fields {
+  button {
+    padding: 3px 6px;
+    margin-bottom: 5px;
+  }
 }

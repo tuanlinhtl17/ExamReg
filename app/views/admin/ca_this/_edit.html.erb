@@ -40,9 +40,13 @@
             </div>
             <br>
             <div class="mation">
-              <span>Phòng máy<label>*</label></span>
-              <br>
-              <%= f.select(:phong_may_id, @phong_mays.collect {|pm| [ pm.ten, pm.id] }, {}, class: "form-control", id: "list-phong-may") %>
+              <%= f.fields_for :ca_thi_phong_mays do |ca_thi_phong_may| %>
+                <%= render "ca_thi_phong_may_fields", f: ca_thi_phong_may %>
+              <% end %>
+
+              <div class="links">
+                <%= link_to_add_association "Thêm phòng máy", f, :ca_thi_phong_mays %>
+              </div>
             </div>
             <br></br>
             <div class="modal-footer">

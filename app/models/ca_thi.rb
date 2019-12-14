@@ -1,7 +1,10 @@
 class CaThi < ApplicationRecord
   belongs_to :ky_thi
-  belongs_to :phong_may
   belongs_to :mon_thi
+  
+  has_many :ca_thi_phong_mays, dependent: :destroy
+  accepts_nested_attributes_for :ca_thi_phong_mays
+  has_many :phong_mays, through: :ca_thi_phong_mays
 
   #Validation
   validates :ten, presence: true
@@ -22,18 +25,56 @@ class CaThi < ApplicationRecord
                   on_or_after_message: :on_or_after_message
   validate :gio_ket_thuc_gio_bat_dau_hop_le
   validate :trung_gio_thi
+  validates_associated :ca_thi_phong_mays
+
+  def get_sinh_vien_by_phong_may phong_may_id
+    ctpm_theo_phong_mays = ca_thi_phong_mays.select { |ctpm| ctpm.phong_may_id == phong_may_id }
+    
+    dang_kys = []
+    ctpm_theo_phong_mays.each do |cpm|
+      dang_kys += cpm.dang_kys
+    end
+
+    sinh_viens = []
+    dang_kys.each { |dk| sinh_viens << dk.sinh_vien }
+    sinh_viens
+  end
 
   private
 
   def trung_gio_thi
     ca_this = CaThi.where(ngay_thi: ngay_thi)
-    overlap = ca_this.select{ |ca_thi| (bat_dau - ca_thi.ket_thuc) * (ca_thi.bat_dau - ket_thuc) > 0  }
-    unless overlap.blank?
-      errors.add(:bat_dau, "Phòng máy đã có ca thi diễn ra vào thời gian này")
+    ca_this = []
+    list_phong_mays = []
+    # Lay danh sach phong may thuoc ca thi nay dua theo ca_thi_phong_mays
+    ca_thi_phong_mays.each do |ctpm|
+      list_phong_mays << PhongMay.find_by(id: ctpm.phong_may_id)
+    end
+    # Lay cac ca thi o cac phong may trong ca thi nay ma co trung ngay du thi
+    list_phong_mays.each do |pm|
+      pm.ca_this.each do |ct|
+        ca_this << ct if ngay_thi == ct.ngay_thi
+      end
+    end
+    ca_this.delete(self)
+    # Kiem tra gio bat dau va ket thuc cua ca thi nay voi cac ca thi truoc xem co trung gio khong
+    overlap_time = ca_this.select{ |ca_thi| (bat_dau - ca_thi.ket_thuc) * (ca_thi.bat_dau - ket_thuc) > 0  }
+    # Lay danh sach cac phong may bi trung gio
+    overlap_time.each do |ct|
+      list_phong_mays &= ct.phong_mays
+    end
+    unless overlap_time.blank?
+      danh_sach_ten = ""
+      list_phong_mays.each do |pm|
+        danh_sach_ten += "#{pm.ten}, "
+      end
+      errors.add(:bat_dau, "Phòng máy #{danh_sach_ten} đã có ca thi diễn ra vào thời gian này")
     end
   end
 
   def gio_ket_thuc_gio_bat_dau_hop_le
-    errors.add(:bat_dau, "Thời gian kết thúc phải sau thời gian bắt đầu") if bat_dau >= ket_thuc
+    if bat_dau && ket_thuc
+      errors.add(:bat_dau, "Thời gian kết thúc phải sau thời gian bắt đầu") if bat_dau >= ket_thuc
+    end
   end
 end

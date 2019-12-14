@@ -24,7 +24,7 @@
 //= require toastr
 //= require select2
 //= require bootstrap-datepicker
-//= require bootstrap-timepicker
+//= require cocoon
 // require ActionCable
 //= require_tree ./channels
 

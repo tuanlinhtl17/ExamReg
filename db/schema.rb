@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_055354) do
+ActiveRecord::Schema.define(version: 2019_12_14_094816) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,19 +24,35 @@ ActiveRecord::Schema.define(version: 2019_12_12_055354) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "ca_thi_phong_mays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "ca_thi_id"
+    t.bigint "phong_may_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ca_thi_id"], name: "index_ca_thi_phong_mays_on_ca_thi_id"
+    t.index ["phong_may_id"], name: "index_ca_thi_phong_mays_on_phong_may_id"
+  end
+
   create_table "ca_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
     t.datetime "bat_dau"
     t.datetime "ket_thuc"
     t.date "ngay_thi"
     t.bigint "ky_thi_id"
-    t.bigint "phong_may_id"
     t.bigint "mon_thi_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ky_thi_id"], name: "index_ca_this_on_ky_thi_id"
     t.index ["mon_thi_id"], name: "index_ca_this_on_mon_thi_id"
-    t.index ["phong_may_id"], name: "index_ca_this_on_phong_may_id"
+  end
+
+  create_table "dang_kies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "sinh_vien_id"
+    t.bigint "ca_thi_phong_may_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ca_thi_phong_may_id"], name: "index_dang_kies_on_ca_thi_phong_may_id"
+    t.index ["sinh_vien_id"], name: "index_dang_kies_on_sinh_vien_id"
   end
 
   create_table "du_dieu_kiens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -109,6 +125,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_055354) do
 
   create_table "phong_mays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
+    t.integer "so_may"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -143,9 +160,12 @@ ActiveRecord::Schema.define(version: 2019_12_12_055354) do
     t.text "sub_sinh_viens_errors"
   end
 
+  add_foreign_key "ca_thi_phong_mays", "ca_this"
+  add_foreign_key "ca_thi_phong_mays", "phong_mays"
   add_foreign_key "ca_this", "ky_this"
   add_foreign_key "ca_this", "mon_this"
-  add_foreign_key "ca_this", "phong_mays"
+  add_foreign_key "dang_kies", "ca_thi_phong_mays"
+  add_foreign_key "dang_kies", "sinh_viens"
   add_foreign_key "du_dieu_kiens", "mon_this"
   add_foreign_key "du_dieu_kiens", "sinh_viens"
   add_foreign_key "du_dieu_kiens_imports", "mon_this"

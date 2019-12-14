@@ -64,3 +64,7 @@ en:
               invalid_time_message: "Giờ kết thúc không hợp lệ"
               on_or_before_message: "Giờ kết thúc phải trước 6:00 pm"
               on_or_after_message: "Giờ kết thúc phải sau 8:00 am"
+        ca_thi_phong_may:
+          attributes:
+            ca_thi_id:
+              uniqueness: "Phòng máy không được trùng"

@@ -1,0 +1,6 @@
+<% if !@error %>
+  $('#dang_ky_<%= @dang_ky.id %>').remove();
+  toastr.success("Hủy đăng ký thành công");
+<% else %>
+  toastr.error("Có lỗi xảy ra, vui lòng thử lại");
+<% end %>

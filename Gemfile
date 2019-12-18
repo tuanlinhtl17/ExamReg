@@ -82,6 +82,13 @@ gem "bootstrap-datepicker-rails"
 #dynamic form
 gem "cocoon"
 
+#export pdf
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
+
+#pass variable to js
+gem "gon"
+
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

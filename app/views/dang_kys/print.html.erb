@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Phiếu báo dự thi</title>
+  
+  <%= stylesheet_link_tag "bootstrap.min.css", media: "all" %>
+  <style>
+    html, body {
+      overflow: auto;
+    }
+
+    body::-webkit-scrollbar { width: 0 !important }
+  </style>
+  
+  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+  <%= wicked_pdf_javascript_include_tag "number_pages" %>
+</head>
+<body>
+  <h3 class="text-center"><strong>Phiếu báo dự thi</strong></h3>
+  <p>Họ và tên: <strong><%= current_sinh_vien.ten %></strong></p>
+  <p>Mã sinh viên: <strong><%= current_sinh_vien.id %></strong></p>
+  <p>Ngày sinh: <strong><%= current_sinh_vien.ngay_sinh %></strong></p>
+  <p>Khoa: <strong><%= current_sinh_vien.khoa %></strong></p>
+  <p>Lớp: <strong><%= current_sinh_vien.lop %></strong></p>
+  <table class="table table-striped table-bordered text-center">
+    <thead>
+      <tr>
+        <th><strong>Môn thi</strong></th>
+        <th><strong>Ngày thi</strong></th>
+        <th><strong>Giờ bắt đầu</strong></th>
+        <th><strong>Giờ kết thúc</strong></th>
+        <th><strong>Phòng thi</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @dang_kys.empty? %>
+        <tr>
+          <td colspan="6">Chưa đăng ký thi</td>
+        </tr>
+      <% else %>
+        <%= render partial: "dang_kys/dang_ky", collection: @dang_kys %>
+      <% end %>
+    </tbody>
+  </table>
+  <script>
+    window.print();
+  </script> 
+</body>
+</html>

@@ -1,0 +1,46 @@
+<h3 class="text-center">Danh sách môn thi</h3>
+<!-- Bang du lieu -->
+<table class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Tên</th>
+      <th>Số tín chỉ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @mon_this.empty? %>
+      <tr>
+        <td colspan="3">Không có môn thi</td>
+      </tr>
+    <% else %>
+      <%= render partial: "mon_this/mon_thi", collection: @mon_this %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<hr>
+<h3 class="text-center">Đã đăng ký thành công</h3>
+<!-- Bang da dang ky -->
+<table class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th>Môn thi</th>
+      <th>Ngày thi</th>
+      <th>Giờ bắt đầu</th>
+      <th>Giờ kết thúc</th>
+      <th>Phòng thi</th>
+      <th>Hủy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @dang_kys.empty? %>
+      <tr>
+        <td colspan="6">Chưa đăng ký thi</td>
+      </tr>
+    <% else %>
+      <%= render partial: "mon_this/dang_ky", collection: @dang_kys %>
+    <% end %>
+  </tbody>
+</table>

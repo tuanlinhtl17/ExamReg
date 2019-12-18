@@ -11,7 +11,7 @@ class CaThi < ApplicationRecord
 
   validates_date :ngay_thi, 
                   invalid_date_message: :invalid_date_message,
-                  on_or_after: :today,
+                  on_or_after: :ngay_thi_hop_le,
                   on_or_after_message: :on_or_after_message
   validates_time :bat_dau, 
                   invalid_time_message: :invalid_time_message,
@@ -76,5 +76,9 @@ class CaThi < ApplicationRecord
     if bat_dau && ket_thuc
       errors.add(:bat_dau, "Thời gian kết thúc phải sau thời gian bắt đầu") if bat_dau >= ket_thuc
     end
+  end
+
+  def ngay_thi_hop_le
+    Date.today < ky_thi.ket_thuc_dang_ky ? ky_thi.ket_thuc_dang_ky : Date.today
   end
 end

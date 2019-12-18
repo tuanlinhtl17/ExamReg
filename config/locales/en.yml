@@ -55,7 +55,7 @@ en:
               blank: "Tên không được thiếu"
             ngay_thi:
               invalid_date_message: "Ngày thi không hợp lệ"   
-              on_or_after_message: "Ngày thi phải trùng hoặc sau hôm nay"
+              on_or_after_message: "Ngày thi phải sau khoảng thời gian đăng ký thi và trùng hoặc sau hôm nay"
             bat_dau:
               invalid_time_message: "Giờ bắt đầu không hợp lệ"
               on_or_before_message: "Giờ bắt đầu phải trước 4:00 pm"
@@ -68,3 +68,7 @@ en:
           attributes:
             ca_thi_id:
               uniqueness: "Phòng máy không được trùng"
+        dang_ky:
+          attributes:
+            ca_thi_phong_may_id:
+              uniqueness: "Đã đăng ký ca thi này trước đây"

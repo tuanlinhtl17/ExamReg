@@ -1,0 +1,13 @@
+<% if mon_thi.ky_thi.is_active? %>
+  <tr id="mon_thi_<%= mon_thi.id %>">
+    <td>
+      <%= mon_thi_counter + 1 %>
+    </td>
+    <td>
+      <%= link_to mon_thi.hoc_phan.ten, mon_thi_path(id: mon_thi.id), remote: true %>
+    </td>
+    <td>
+      <%= mon_thi.hoc_phan.so_tin_chi %>
+    </td>
+  </tr>
+<% end %>

@@ -1,0 +1,30 @@
+<%= link_to print_path, class: "btn btn-primary", target: "_blank" do %>
+  <i class="fa fa-lg fa-print" aria-hidden="true"></i> In kết quả đăng ký
+<% end %>
+
+<%= link_to print_path(format: :pdf), class: "btn btn-success" do %>
+  <i class="fa fa-lg fa-print" aria-hidden="true"></i> Tải kết quả đăng ký
+<% end %>
+
+<hr>
+<!-- Bang da dang ky -->
+<table class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th>Môn thi</th>
+      <th>Ngày thi</th>
+      <th>Giờ bắt đầu</th>
+      <th>Giờ kết thúc</th>
+      <th>Phòng thi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @dang_kys.empty? %>
+      <tr>
+        <td colspan="6">Chưa đăng ký thi</td>
+      </tr>
+    <% else %>
+      <%= render partial: "dang_kys/dang_ky", collection: @dang_kys %>
+    <% end %>
+  </tbody>
+</table>

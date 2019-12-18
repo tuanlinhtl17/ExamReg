@@ -1,2 +1,5 @@
+if ($('#showSinhViensImport').length) {
+  $('#showSinhViensImport').remove();
+}
 $('main').append('<%= escape_javascript(render(partial: "admin/sinh_viens_imports/show", locals: { sinh_viens_import: @sinh_viens_import })) %>')
 $("#showSinhViensImport").modal("show");

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'dang_kys/index'
+  get 'dang_kys/create'
+  get 'dang_kys/update'
+  get 'dang_kys/destroy'
+  get 'dang_kys/print'
+  get 'ca_this/show'
+  get 'mon_this/index'
+  get 'mon_this/show'
   #login routes
   devise_for :sinh_viens, path: "sinh_vien"
   devise_for :admins, path: "admin"
@@ -29,5 +37,8 @@ Rails.application.routes.draw do
     resources :sinh_viens_imports, only: [:create, :show] 
   end
 
-  root to: "home#index"
+  root to: "mon_this#index"
+  resources :mon_this, only: [:index, :show]
+  resources :dang_kys, only: [:index, :create, :destroy]
+  get "/print", to: "dang_kys#print"
 end

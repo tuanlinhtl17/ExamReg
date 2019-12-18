@@ -1,0 +1,22 @@
+<tr id="dang_ky_<%= dang_ky.id %>">
+  <td>
+    <%= dang_ky.get_mon_thi.hoc_phan.ten %>
+  </td>
+  <td>
+    <%= dang_ky.get_ca_thi.ngay_thi %>
+  </td>
+  <td>
+    <%= dang_ky.get_ca_thi.bat_dau.strftime("%H:%M") %>
+  </td>
+  <td>
+    <%= dang_ky.get_ca_thi.ket_thuc.strftime("%H:%M") %>
+  </td>
+  <td>
+    <%= dang_ky.get_phong_may.ten %>
+  </td>
+  <td>
+    <%= link_to dang_ky_path(dang_ky), method: :delete, data: { confirm: "Bạn chắc chắn muốn hủy đăng ký ?" }, remote: true do %>
+      <i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>
+    <% end %>
+  </td>
+</tr>

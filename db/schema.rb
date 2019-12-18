@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2019_12_14_094816) do
   create_table "ky_this", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
     t.string "nam_hoc"
+    t.date "bat_dau_dang_ky"
+    t.date "ket_thuc_dang_ky"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_094816) do
   create_table "phong_mays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
     t.integer "so_may"
+    t.integer "so_may_trong"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

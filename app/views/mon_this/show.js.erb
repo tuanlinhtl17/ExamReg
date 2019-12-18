@@ -1,0 +1,21 @@
+$('main').html('<%= escape_javascript(render(partial: "mon_this/show", locals: { mon_thi: @mon_thi, ca_this: @ca_this })) %>');
+$(document).ready( function () {
+  initCaThiSinhVienTable();
+
+  $('.dangKyThi').click(() => {
+    let input = $('input:checked');
+    if (input) {
+      $.ajax({
+        type: 'POST',
+        url: '/dang_kys',
+        data: {
+          ca_thi_id: input.attr('data-ca-thi-id'),
+          phong_may_id: input[0].value
+        },
+        dataType: 'script'
+      });
+    } else {
+      toastr.error('Phải chọn một phòng thi');
+    }
+  });
+});

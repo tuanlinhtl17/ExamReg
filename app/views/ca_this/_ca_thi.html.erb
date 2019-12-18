@@ -1,0 +1,28 @@
+<% ca_thi.phong_mays.each do |phong_may| %>
+  <tr id="ca_thi_<%= ca_thi.id %>">
+    <td>
+      <%= ca_thi_counter + 1 %>
+    </td>
+    <td>
+      <%= ca_thi.ten %>
+    </td>
+    <td>
+      <%= ca_thi.ngay_thi %>
+    </td>
+    <td>
+      <%= ca_thi.bat_dau.strftime("%H:%M") %>
+    </td>
+    <td>
+      <%= ca_thi.ket_thuc.strftime("%H:%M") %>
+    </td>
+    <td>
+      <%= phong_may.ten %>
+    </td>
+    <td>
+      <%= phong_may.so_may_trong %>
+    </td>
+    <td>
+      <%= radio_button "dang_ky", "ma_phong_may", phong_may.id, checked: false, data: {ca_thi_id: ca_thi.id} %>
+    </td>
+  </tr>
+<% end %>

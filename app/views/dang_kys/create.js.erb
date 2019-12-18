@@ -1,0 +1,10 @@
+$("#showDangKy").modal("hide");
+$('.alert').remove();
+<% if @ket_qua_dang_ky[:error] %>
+  toastr.error("Đã xảy ra lỗi, vui lòng thử lại");
+  <% if (@ket_qua_dang_ky[:dang_ky]) %>
+    $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ket_qua_dang_ky[:dang_ky] })) %>')
+  <% end %>
+<% else %>
+  toastr.success("Đăng ký thành công");
+<% end %>

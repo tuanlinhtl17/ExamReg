@@ -7,7 +7,7 @@ class SinhVien < ApplicationRecord
 
   has_many :khong_du_dieu_kiens, dependent: :destroy
   has_many :du_dieu_kiens, dependent: :destroy
-  has_many :dang_kys
+  has_many :dang_kys, dependent: :destroy
 
   #Validation
   validates :id, presence: true, uniqueness: {message: :uniqueness}

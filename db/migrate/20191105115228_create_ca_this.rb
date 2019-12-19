@@ -5,8 +5,8 @@ class CreateCaThis < ActiveRecord::Migration[5.2]
       t.datetime :bat_dau
       t.datetime :ket_thuc
       t.date :ngay_thi
-      t.references :ky_thi, foreign_key: true
-      t.references :mon_thi, foreign_key: true
+      t.references :ky_thi, foreign_key: { on_delete: :cascade }
+      t.references :mon_thi, foreign_key: { on_delete: :cascade }
 
       t.timestamps
     end

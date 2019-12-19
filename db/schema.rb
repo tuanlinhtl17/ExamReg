@@ -163,18 +163,18 @@ ActiveRecord::Schema.define(version: 2019_12_14_094816) do
     t.text "sub_sinh_viens_errors"
   end
 
-  add_foreign_key "ca_thi_phong_mays", "ca_this"
-  add_foreign_key "ca_thi_phong_mays", "phong_mays"
-  add_foreign_key "ca_this", "ky_this"
-  add_foreign_key "ca_this", "mon_this"
-  add_foreign_key "dang_kies", "ca_thi_phong_mays"
-  add_foreign_key "dang_kies", "sinh_viens"
-  add_foreign_key "du_dieu_kiens", "mon_this"
-  add_foreign_key "du_dieu_kiens", "sinh_viens"
-  add_foreign_key "du_dieu_kiens_imports", "mon_this"
-  add_foreign_key "khong_du_dieu_kiens", "mon_this"
-  add_foreign_key "khong_du_dieu_kiens", "sinh_viens"
-  add_foreign_key "khong_du_dieu_kiens_imports", "mon_this"
-  add_foreign_key "mon_this", "hoc_phans"
-  add_foreign_key "mon_this", "ky_this"
+  add_foreign_key "ca_thi_phong_mays", "ca_this", on_delete: :cascade
+  add_foreign_key "ca_thi_phong_mays", "phong_mays", on_delete: :cascade
+  add_foreign_key "ca_this", "ky_this", on_delete: :cascade
+  add_foreign_key "ca_this", "mon_this", on_delete: :cascade
+  add_foreign_key "dang_kies", "ca_thi_phong_mays", on_delete: :cascade
+  add_foreign_key "dang_kies", "sinh_viens", on_delete: :cascade
+  add_foreign_key "du_dieu_kiens", "mon_this", on_delete: :cascade
+  add_foreign_key "du_dieu_kiens", "sinh_viens", on_delete: :cascade
+  add_foreign_key "du_dieu_kiens_imports", "mon_this", on_delete: :cascade
+  add_foreign_key "khong_du_dieu_kiens", "mon_this", on_delete: :cascade
+  add_foreign_key "khong_du_dieu_kiens", "sinh_viens", on_delete: :cascade
+  add_foreign_key "khong_du_dieu_kiens_imports", "mon_this", on_delete: :cascade
+  add_foreign_key "mon_this", "hoc_phans", on_delete: :cascade
+  add_foreign_key "mon_this", "ky_this", on_delete: :cascade
 end

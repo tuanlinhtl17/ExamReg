@@ -6,7 +6,7 @@ class Admin::DuDieuKiensImportsController < Admin::AdminController
   end
 
   def create
-    if !params[:du_dieu_kiens_import].nil?
+    if !params[:du_dieu_kiens_import][:excel].nil?
       @du_dieu_kiens_import_new = DuDieuKiensImport.new du_dieu_kiens_import_params
       if @du_dieu_kiens_import_new.save 
         @du_dieu_kiens_import_new.status = :importing

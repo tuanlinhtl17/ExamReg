@@ -43,7 +43,6 @@ class CaThi < ApplicationRecord
   private
 
   def trung_gio_thi
-    ca_this = CaThi.where(ngay_thi: ngay_thi)
     ca_this = []
     list_phong_mays = []
     # Lay danh sach phong may thuoc ca thi nay dua theo ca_thi_phong_mays

@@ -4,9 +4,9 @@ $('.alert').remove();
   $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ky_thi_new })) %>')
 <% else %>
   if ($('#kyThi .dataTables_empty')) {
-    $('#kyThi .dataTables_empty').parent().remove()
+    $('#kyThi .dataTables_empty').parent().remove();
   }
   $('#new_ky_thi').trigger('reset');
   $('#kyThi').DataTable().row.add($('<%= escape_javascript(render(partial: "admin/ky_this/ky_thi", locals: { ky_thi: @ky_thi_new })) %>')[0]).draw()
-  toastr.success("Thêm học phần thành công")
+  toastr.success("Thêm học phần thành công");
 <% end %>

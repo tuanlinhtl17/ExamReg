@@ -6,7 +6,7 @@ class Admin::KhongDuDieuKiensImportsController < Admin::AdminController
   end
 
   def create
-    if !params[:khong_du_dieu_kiens_import].nil?
+    if !params[:khong_du_dieu_kiens_import][:excel].nil?
       @khong_du_dieu_kiens_import_new = KhongDuDieuKiensImport.new khong_du_dieu_kiens_import_params
       if @khong_du_dieu_kiens_import_new.save 
         @khong_du_dieu_kiens_import_new.status = :importing

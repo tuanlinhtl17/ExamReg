@@ -3,7 +3,7 @@ class CreateKhongDuDieuKiensImport < ActiveRecord::Migration[5.2]
     create_table :khong_du_dieu_kiens_imports do |t|
       t.integer :status
       t.text :sub_khong_du_dieu_kiens_errors
-      t.references :mon_thi, foreign_key: true
+      t.references :mon_thi, foreign_key: { on_delete: :cascade }
 
       t.timestamps
     end

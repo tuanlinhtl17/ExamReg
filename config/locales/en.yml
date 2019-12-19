@@ -72,3 +72,21 @@ en:
           attributes:
             ca_thi_phong_may_id:
               uniqueness: "Đã đăng ký ca thi này trước đây"
+        ky_thi:
+          attributes:
+            ten:
+              blank: "Tên không được trống"
+            nam_hoc:
+              blank: "Năm học không được trống"
+            bat_dau_dang_ky:
+              invalid_date_message: "Ngày bắt đầu đăng ký thi không hợp lệ"   
+              on_or_after_message: "Ngày bắt đầu đăng ký thi phải trùng hoặc sau hôm nay"
+            bat_dau_dang_ky:
+                invalid_date_message: "Ngày kết thúc đăng ký thi không hợp lệ"   
+                on_or_after_message: "Ngày kết thúc đăng ký thi phải trùng hoặc sau ngày bắt đầu đăng ký thi"
+        phong_may:
+          attributes:
+            ten:
+              blank: "Tên không được trống"
+            so_may:
+              blank: "Số máy không được trống"          

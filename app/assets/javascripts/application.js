@@ -19,8 +19,6 @@
 //= require datatables
 //= require popper
 //= require bootstrap-sprockets
-//= require sweetalert2
-//= require sweet-alert2-rails
 //= require toastr
 //= require select2
 //= require bootstrap-datepicker
@@ -61,12 +59,7 @@ $(document).ready(function () {
     'hideMethod': 'fadeOut'
   }
 
-  window.sweetAlertConfirmConfig = {
-    showCancelButton: true,
-    confirmButtonColor: '#00BFFF',
-    confirmButtonText: 'Đồng ý',
-    cancelButtonText: 'Thoát',
-  };
+
 
   // Javascript to enable link to tab
   var url = document.location.toString();
@@ -75,7 +68,7 @@ $(document).ready(function () {
   }
 
   // Change hash for page-reload
-  $('.nav-tabs a').on('shown.bs.tab', function (e) {
-    window.location.hash = e.target.hash;
-  })
+  // $('.nav-tabs a').on('shown.bs.tab', function (e) {
+  //   window.location.hash = e.target.hash;
+  // })
 });

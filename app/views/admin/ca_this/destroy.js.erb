@@ -1,6 +1,6 @@
 <% if @error %>
   toastr.error(@error)
 <% else %>
-  $('#hoc_phan_<%= @hoc_phan.id %>').remove()
+  $('#caThi').DataTable().row($('#hoc_phan_<%= @hoc_phan.id %>')).remove().draw();
   toastr.success("Xóa ca thi thành công")
 <% end %>

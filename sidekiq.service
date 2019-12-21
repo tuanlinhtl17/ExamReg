@@ -28,7 +28,7 @@ After=syslog.target network.target
 Type=simple
 WorkingDirectory=/home/tl17/Desktop/Examreg
 # If you use rbenv:
-ExecStart=/bin/bash -lc 'cd /home/tl17/Desktop/Examreg && bundle exec sidekiq -e production'
+ExecStart=/bin/bash -lc '/home/tl17/.rbenv/shims/bundle exec sidekiq -e production'
 # If you use the system's ruby:
 # ExecStart=/tl17/local/bin/bundle exec sidekiq -e production
 

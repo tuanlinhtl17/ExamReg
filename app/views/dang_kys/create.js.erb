@@ -6,5 +6,6 @@ $('.alert').remove();
     $('main').prepend('<%= escape_javascript(render(partial: "shared/error_messages", locals: { object: @ket_qua_dang_ky[:dang_ky] })) %>')
   <% end %>
 <% else %>
+  $('#ca_thi_<%= @ket_qua_dang_ky[:ca_thi_id] %> td')[6].innerHTML = <%= @ket_qua_dang_ky[:so_may_trong] %>
   toastr.success("Đăng ký thành công");
 <% end %>

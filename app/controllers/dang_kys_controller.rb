@@ -14,9 +14,9 @@ class DangKysController < ApplicationController
   end
 
   def destroy
-    @dang_ky = current_sinh_vien.dang_kys.find_by params[:id]
+    @dang_ky = current_sinh_vien.dang_kys.find_by id: params[:id]
     if @dang_ky
-      @dang_ky.delete
+      @dang_ky.destroy
       @error = false
     else
       @error = true

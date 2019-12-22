@@ -5,8 +5,8 @@ class DangKy < ApplicationRecord
   validate :so_may_trong
   validates :ca_thi_phong_may_id, uniqueness: { scope: :sinh_vien_id, message: :uniqueness }
   
-  after_save :update_so_may_trong_phong_may
-  after_destroy :update_so_may_trong_phong_may
+  after_save :update_so_may_trong_ca_thi_phong_may
+  after_destroy :update_so_may_trong_ca_thi_phong_may
 
   def get_mon_thi
     get_ca_thi.mon_thi
@@ -22,12 +22,12 @@ class DangKy < ApplicationRecord
 
   private
 
-  def update_so_may_trong_phong_may
-    ca_thi_phong_may.phong_may.update_so_may_trong
+  def update_so_may_trong_ca_thi_phong_may
+    ca_thi_phong_may.update_so_may_trong
   end
 
   def so_may_trong
-    if ca_thi_phong_may.phong_may.so_may_trong == 0
+    if ca_thi_phong_may.so_may_trong == 0
       errors.add(:ca_thi_phong_may, "Số máy trống trong phòng không đủ để đăng ký")
     end
   end

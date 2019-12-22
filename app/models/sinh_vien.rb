@@ -32,8 +32,9 @@ class SinhVien < ApplicationRecord
     ca_thi_id = ca_thi_id.to_i
     phong_may_id = phong_may_id.to_i
     ca_thi = CaThi.find_by id: ca_thi_id
+    phong_may = PhongMay.find_by id: phong_may_id
     ca_thi_phong_may = CaThiPhongMay.find_by ca_thi_id: ca_thi_id, phong_may_id: phong_may_id
-    if ca_thi && ca_thi_phong_may && load_mon_this.include?(ca_thi.mon_thi)
+    if ca_thi && phong_may && ca_thi_phong_may && load_mon_this.include?(ca_thi.mon_thi)
       # Xoa toan bo cac dang ky thi truoc do cua sinh vien nay doi voi mon thi nay roi tao moi dang ky
 
       mon_thi = ca_thi.mon_thi
@@ -48,11 +49,12 @@ class SinhVien < ApplicationRecord
       ca_thi_phong_mays.each do |ca_thi_phong_may|
         dang_kys += ca_thi_phong_may.dang_kys.select {|dang_ky| dang_ky.sinh_vien_id == id}
       end
-      dang_kys.map(&:delete)
+      dang_kys.map(&:destroy)
       # Tao dang ky moi
       dang_ky = DangKy.new sinh_vien_id: id, ca_thi_phong_may_id: ca_thi_phong_may.id
       if dang_ky.save
-        return { error: false }
+        ca_thi_phong_may = CaThiPhongMay.find_by ca_thi_id: ca_thi_id, phong_may_id: phong_may_id
+        return { error: false, ca_thi_id: ca_thi_id, so_may_trong: ca_thi_phong_may.so_may_trong }
       else
         return { error: true, dang_ky: dang_ky }
       end

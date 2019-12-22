@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_094816) do
   create_table "ca_thi_phong_mays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "ca_thi_id"
     t.bigint "phong_may_id"
+    t.integer "so_may_trong"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ca_thi_id"], name: "index_ca_thi_phong_mays_on_ca_thi_id"
@@ -128,7 +129,6 @@ ActiveRecord::Schema.define(version: 2019_12_14_094816) do
   create_table "phong_mays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "ten"
     t.integer "so_may"
-    t.integer "so_may_trong"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

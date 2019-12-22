@@ -1,4 +1,5 @@
 <% ca_thi.phong_mays.each do |phong_may| %>
+  <% ca_thi_phong_may = CaThiPhongMay.find_by ca_thi_id: ca_thi.id, phong_may_id: phong_may.id %>
   <tr id="ca_thi_<%= ca_thi.id %>">
     <td>
       <%= ca_thi_counter + 1 %>
@@ -19,7 +20,7 @@
       <%= phong_may.ten %>
     </td>
     <td>
-      <%= phong_may.so_may_trong %>
+      <%= ca_thi_phong_may.so_may_trong %>
     </td>
     <td>
       <%= radio_button "dang_ky", "ma_phong_may", phong_may.id, checked: false, data: {ca_thi_id: ca_thi.id} %>

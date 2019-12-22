@@ -41,41 +41,13 @@ namespace :db do
       time = rand(7..16)
       ct = CaThi.new ten: "Ca thi #{t + 1}", bat_dau: "#{time}:00:00", 
                   ket_thuc: "#{time + 1}:00:00", ngay_thi: "#{ky_thi_1.ket_thuc_dang_ky + rand(1..14)}",
-                  ky_thi_id: 1, mon_thi_id: rand(1..5)
+                  ky_thi_id: 1, mon_thi_id: t % 5 + 1
       ct.save
       puts ct.errors.messages if !ct.errors.messages.empty?
     end
 
     6.times.each do |t|
       CaThiPhongMay.create ca_thi_id: (t + 1), phong_may_id: t % 3 + 1
-    end
-
-    6.times.each do |t|
-      if (t + 1) % 2 != 0
-        dk1 = DangKy.new(sinh_vien_id: 16021400, ca_thi_phong_may_id: t + 1) 
-        dk1.save
-        puts dk1.errors.messages if !dk1.errors.messages.empty?
-      end
-
-      if (t + 1) % 2 == 0
-        dk2 = DangKy.new(sinh_vien_id: 17021400, ca_thi_phong_may_id: t + 1)   
-        dk2.save 
-        puts dk2.errors.messages if !dk2.errors.messages.empty?
-      end
-    end
-
-    6.times.each do |t|
-      if (t + 1) % 2 == 0
-        dk1 = DangKy.new(sinh_vien_id: 16021400, ca_thi_phong_may_id: t + 1) 
-        dk1.save
-        puts dk1.errors.messages if !dk1.errors.messages.empty?
-      end
-
-      if (t + 1) % 2 != 0
-        dk2 = DangKy.new(sinh_vien_id: 17021400, ca_thi_phong_may_id: t + 1)   
-        dk2.save 
-        puts dk2.errors.messages if !dk2.errors.messages.empty?
-      end
     end
 
     puts "The data was created successfully."

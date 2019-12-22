@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_logged_in
-    return if logged_in? || request.env['PATH_INFO'] == new_sinh_vien_session_path || request.env['PATH_INFO'] == new_admin_session_path
+    return if logged_in? || devise_controller?
     redirect_to new_sinh_vien_session_path
   end
 end

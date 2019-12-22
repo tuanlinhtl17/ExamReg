@@ -13,13 +13,13 @@
         <%= form_for [:admin, @hoc_phan_new], remote: true do |f| %>
           <div class="register-top-grid">
             <div class="mation">
-              <span>Tên học phần<label>*</label></span>
-              <%= f.text_field :ten, class: "form-control" %>
+              <span>Tên học phần<label>*</label><i>(Tối đa 30 ký tự)</i></span>
+              <%= f.text_field :ten, class: "form-control", placeholder: "VD: Môn học A" %>
             </div>
             <br>
             <div class="mation">
-              <span>Số tín chỉ<label>*</label></span>
-              <%= f.text_field :so_tin_chi, class: "form-control" %>
+              <span>Số tín chỉ<label>*</label><i>(Tối thiểu là 1)</i></span>
+              <%= f.text_field :so_tin_chi, class: "form-control", placeholder: "VD: 3" %>
             </div>
             <br></br>
             <div class="modal-footer">

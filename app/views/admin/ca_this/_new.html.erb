@@ -14,8 +14,8 @@
           <%= f.hidden_field :ky_thi_id, value: @ky_thi.id %>
           <div class="register-top-grid">
             <div class="mation">
-              <span>Tên ca thi<label>*</label></span>
-              <%= f.text_field :ten, class: "form-control" %>
+              <span>Tên ca thi<label>*</label><i> (Tối đa 30 ký tự)</i></span>
+              <%= f.text_field :ten, class: "form-control", placeholder: "VD: Ca thi 1" %>
             </div>
             <br>
             <div class="mation">

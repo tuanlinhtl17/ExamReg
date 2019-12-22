@@ -65,7 +65,7 @@ class Admin::KyThisController < Admin::AdminController
   private
 
   def ky_thi_params
-    params.require(:ky_thi).permit(:ten, :nam_hoc)
+    params.require(:ky_thi).permit(:ten, :nam_hoc, :bat_dau_dang_ky, :ket_thuc_dang_ky)
   end
 
   def find_ky_thi

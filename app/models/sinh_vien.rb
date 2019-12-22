@@ -11,13 +11,13 @@ class SinhVien < ApplicationRecord
 
   #Validation
   validates :id, presence: true, uniqueness: {message: :uniqueness}
-  validates :ten, presence: true
+  validates :ten, presence: true, length: { minimum: 5, maximum: 50 }
   validates_date :ngay_sinh, 
                   invalid_date_message: :invalid_date_message,
                   before: lambda { 18.years.ago },
                   before_message: :before_message
-  validates :khoa, presence: true
-  validates :lop, presence: true
+  validates :khoa, presence: true, length: { minimum: 3, maximum: 50 }
+  validates :lop, presence: true, length: { minimum: 2, maximum: 10 }
 
   def load_mon_this
     du_dieu_kiens.includes(:mon_thi)

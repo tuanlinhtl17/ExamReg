@@ -2,8 +2,8 @@ class KyThi < ApplicationRecord
   has_many :ca_this, dependent: :destroy
   has_many :mon_this, dependent: :destroy
 
-  validates :ten, presence: true
-  validates :nam_hoc, presence: true
+  validates :ten, presence: true, length: { minimum: 5, maximum: 30 }
+  validates :nam_hoc, presence: true, length: { minimum: 4, maximum: 11 }
   validates_date :bat_dau_dang_ky, 
                   invalid_date_message: :invalid_date_message,
                   on_or_after: :today,

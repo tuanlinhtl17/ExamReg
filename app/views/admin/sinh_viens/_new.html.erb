@@ -13,18 +13,18 @@
         <%= form_for [:admin, @sinh_vien_new], remote: true do |f| %>
           <div class="register-top-grid">
             <div class="mation">
-              <span>Tên sinh viên<label>*</label></span>
-              <%= f.text_field :ten, class: "form-control" %>
+              <span>Tên sinh viên<label>*</label><i> (Tối đa 50 ký tự)</i></span>
+              <%= f.text_field :ten, class: "form-control", placeholder: "VD: Nguyễn Văn A" %>
             </div>
             <br>
             <div class="mation">
-              <span>Mã sinh viên<label>*</label></span>
-              <%= f.text_field :id, class: "form-control" %>
+              <span>Mã Sinh viên<label>*</label></span>
+              <%= f.text_field :id, class: "form-control", placeholder: "VD: 16021400" %>
             </div>
             <br>
             <div class="mation">
               <span>Email<label>*</label></span>
-              <%= f.email_field :email, class: "form-control" %>
+              <%= f.email_field :email, class: "form-control", placeholder: "VD: 16021400@vnu.edu.vn" %>
             </div>
             <br>
             <div class="mation">
@@ -33,13 +33,13 @@
             </div>
             <br>
             <div class="mation">
-              <span>Khoa<label>*</label></span>
-              <%= f.text_field :khoa, class: "form-control" %>
+              <span>Khoa<label>*</label><i> (Tối đa 50 ký tự)</i></span>
+              <%= f.text_field :khoa, class: "form-control", placeholder: "VD: Công nghệ thông tin" %>
             </div>
             <br>
             <div class="mation">
-              <span>Lớp<label>*</label></span>
-              <%= f.text_field :lop, class: "form-control" %>
+              <span>Lớp<label>*</label><i> (Tối đa 10 ký tự)</i></span>
+              <%= f.text_field :lop, class: "form-control", placeholder: "VD: CAC" %>
             </div>
             <br>
 

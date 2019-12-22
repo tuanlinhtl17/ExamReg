@@ -7,7 +7,7 @@ class CaThi < ApplicationRecord
   has_many :phong_mays, through: :ca_thi_phong_mays
 
   #Validation
-  validates :ten, presence: true
+  validates :ten, presence: true, length: { minimum: 5, maximum: 30 }
 
   validates_date :ngay_thi, 
                   invalid_date_message: :invalid_date_message,

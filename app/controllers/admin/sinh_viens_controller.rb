@@ -52,7 +52,7 @@ class Admin::SinhViensController < Admin::AdminController
   private
 
   def sinh_vien_params
-    params.require(:sinh_vien).permit(:id,:ten, :email, :ngay_sinh, :khoa, :lop)
+    params.require(:sinh_vien).permit(:id, :ten, :email, :ngay_sinh, :khoa, :lop)
   end
 
   def find_sinh_vien

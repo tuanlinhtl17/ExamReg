@@ -6,12 +6,19 @@ en:
           attributes:
             ten:
               blank: "Tên không được trống"
+              too_long: "Tên không được dài hơn 30 ký tự"
+              too_short: "Tên không được ngắn hơn 5 ký tự"
             so_tin_chi:
               blank: "Số tín chỉ không được trống"
+              greater_than_or_equal_to: "Số tín chỉ ít nhất là 1"
+              not_an_integer: "Số tín chỉ phải là số tự nhiên"
+              not_a_number: "Số tín chỉ phải là số"
         sinh_vien:
           attributes:
             ten:
               blank: "Tên không được trống"
+              too_long: "Tên không được dài hơn 50 ký tự"
+              too_short: "Tên không được ngắn hơn 5 ký tự"
             id:
               blank: "Mã sinh viên không được trống"
               uniqueness: "Mã sinh viên không được trùng"
@@ -19,9 +26,13 @@ en:
               before_message: "Phải ít nhất 18 tuổi"
               invalid_date_message: "Ngày sinh không hợp lệ"
             khoa:
-              blank: "Tên không được trống"
+              blank: "Khoa không được trống"
+              too_long: "Khoa không được dài hơn 50 ký tự"
+              too_short: "Khoa không được ngắn hơn 3 ký tự"
             lop:
-              blank: "Tên không được trống"
+              blank: "Lớp không được trống"
+              too_long: "Lớp không được dài hơn 10 ký tự"
+              too_short: "Lớp không được ngắn hơn 2 ký tự"
             email:
               taken: "Email không được trùng"
         mon_thi:
@@ -53,6 +64,8 @@ en:
               required: "Không có môn thi này trong hệ thống"    
             ten:
               blank: "Tên không được thiếu"
+              too_long: "Tên không được dài hơn 30 ký tự"
+              too_short: "Tên không được ngắn hơn 5 ký tự"
             ngay_thi:
               invalid_date_message: "Ngày thi không hợp lệ"   
               on_or_after_message: "Ngày thi phải sau khoảng thời gian đăng ký thi và trùng hoặc sau hôm nay"
@@ -76,17 +89,26 @@ en:
           attributes:
             ten:
               blank: "Tên không được trống"
+              too_long: "Tên không được dài hơn 30 ký tự"
+              too_short: "Tên không được ngắn hơn 5 ký tự"
             nam_hoc:
               blank: "Năm học không được trống"
+              too_long: "Năm học không được dài hơn 11 ký tự"
+              too_short: "Năm học không được ngắn hơn 4 ký tự"
             bat_dau_dang_ky:
               invalid_date_message: "Ngày bắt đầu đăng ký thi không hợp lệ"   
               on_or_after_message: "Ngày bắt đầu đăng ký thi phải trùng hoặc sau hôm nay"
-            bat_dau_dang_ky:
+            ket_thuc_dang_ky:
                 invalid_date_message: "Ngày kết thúc đăng ký thi không hợp lệ"   
                 on_or_after_message: "Ngày kết thúc đăng ký thi phải trùng hoặc sau ngày bắt đầu đăng ký thi"
         phong_may:
           attributes:
             ten:
               blank: "Tên không được trống"
+              too_long: "Tên không được dài hơn 10 ký tự"
+              too_short: "Tên không được ngắn hơn 2 ký tự"
             so_may:
               blank: "Số máy không được trống"          
+              greater_than_or_equal_to: "Số máy ít nhất là 10"
+              not_an_integer: "Số máy phải là số tự nhiên"
+              not_a_number: "Số máy phải là số"

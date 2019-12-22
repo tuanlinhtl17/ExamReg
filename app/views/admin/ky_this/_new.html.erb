@@ -13,15 +13,25 @@
         <%= form_for [:admin, @ky_thi_new], remote: true do |f| %>
           <div class="register-top-grid">
             <div class="mation">
-              <span>Tên kỳ thi<label>*</label></span>
-              <%= f.text_field :ten, class: "form-control" %>
+              <span>Tên kỳ thi<label>*</label><i> (Tối đa 30 ký tự)</i></span>
+              <%= f.text_field :ten, class: "form-control", placeholder: "VD: Học kỳ I" %>
             </div>
             <br>
             <div class="mation">
               <span>Năm học<label>*</label></span>
-              <%= f.text_field :nam_hoc, class: "form-control" %>
+              <%= f.text_field :nam_hoc, class: "form-control", placeholder: "VD: 2019 - 2020" %>
             </div>
-            <br></br>
+            <br>
+            <div class="mation">
+              <span>Ngày bắt đầu đăng ký thi<label>*</label></span>
+              <%= f.date_field :bat_dau_dang_ky, class: "form-control" %>
+            </div>
+            <br>
+            <div class="mation">
+              <span>Ngày kết thúc đăng ký thi<label>*</label></span>
+              <%= f.date_field :ket_thuc_dang_ky, class: "form-control" %>
+            </div>
+            <br>
             <div class="modal-footer">
               <%= f.submit "Xác nhận", class: "btn btn-primary" %>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>

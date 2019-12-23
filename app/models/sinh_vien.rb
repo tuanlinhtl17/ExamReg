@@ -18,6 +18,7 @@ class SinhVien < ApplicationRecord
                   before_message: :before_message
   validates :khoa, presence: true, length: { minimum: 3, maximum: 50 }
   validates :lop, presence: true, length: { minimum: 2, maximum: 10 }
+  validate :admin_email
 
   def load_mon_this
     du_dieu_kiens.includes(:mon_thi)
@@ -69,4 +70,14 @@ class SinhVien < ApplicationRecord
     return false if skip_password_validation
     super
   end
+
+  private
+
+  def admin_email
+    admin = Admin.find_by email: email
+      if admin
+        errors.add(:email, "Email này trùng với email của admin")
+      end
+  end
+
 end

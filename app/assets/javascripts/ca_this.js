@@ -22,7 +22,7 @@ let initCaThiSinhVienTable = () => {
       "columnDefs": [{
         "orderable": false,
         "width": "10%",
-        "targets": 0
+        "targets": 7
       }]
     });
   }

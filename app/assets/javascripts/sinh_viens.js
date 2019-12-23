@@ -5,7 +5,12 @@ $(document).ready(function () {
 const initSinhVienTable = () => {
   if (!$.fn.dataTable.isDataTable('#sinhVien')) {
     $('#sinhVien').DataTable({
-      "language": datatableLanguage
+      "language": datatableLanguage,
+      "columnDefs": [{
+        "orderable": false,
+        "width": "10%",
+        "targets": 5
+      }]
     });
   }
 }
